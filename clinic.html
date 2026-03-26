@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Partnerklinik — Baltic Health Travel. Zertifizierte Kliniken in Riga, Vilnius, Tallinn." />
+  <title>Partnerklinik | Baltic Health Travel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">Baltic Health Travel</a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-i18n="nav.home">Startseite</a></li>
+        <li><a href="treatments.html" data-i18n="nav.treatments">Behandlungen</a></li>
+        <li><a href="clinics.html" data-i18n="nav.clinics">Kliniken</a></li>
+        <li><a href="how-it-works.html" data-i18n="nav.process">Ablauf</a></li>
+        <li><a href="prices.html" data-i18n="nav.prices">Preise</a></li>
+        <li><a href="patient-stories.html" data-i18n="nav.stories">Erfahrungen</a></li>
+        <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Kontakt</a></li>
+      </ul>
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <button type="button" class="lang-switcher-btn" data-lang="de" aria-current="true">DE</button>
+        <span class="lang-switcher-sep" aria-hidden="true"></span>
+        <button type="button" class="lang-switcher-btn" data-lang="en" aria-current="false">EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="clinic-main">
+    <section class="page-hero">
+      <div class="page-hero-bg" id="clinic-hero-bg" aria-hidden="true"></div>
+      <div class="page-hero-inner">
+        <h1 class="page-hero-title" id="clinic-title">Partnerklinik</h1>
+        <p class="page-hero-lead" id="clinic-lead">Laden …</p>
+      </div>
+    </section>
+
+    <section class="section" data-animate>
+      <h2 class="section-title" data-i18n="clinic.overview">Kliniküberblick</h2>
+      <p class="body-large" id="clinic-overview">—</p>
+    </section>
+
+    <section class="section section-alt" data-animate>
+      <h2 class="section-title" data-i18n="clinic.doctors">Ärzteteam</h2>
+      <p class="section-lead" data-i18n="clinic.doctorsLead">Erfahrene Fachärztinnen und Fachärzte mit anerkannter Qualifikation.</p>
+      <div class="doctor-grid" id="clinic-doctors"></div>
+    </section>
+
+    <section class="section" data-animate>
+      <h2 class="section-title" data-i18n="clinic.equipment">Ausstattung &amp; Einrichtungen</h2>
+      <p class="body-large" id="clinic-equipment">—</p>
+    </section>
+
+    <section class="section section-alt" data-animate>
+      <h2 class="section-title" data-i18n="clinic.certifications">Zertifizierungen</h2>
+      <ul class="cert-list" id="clinic-certs"></ul>
+    </section>
+
+    <section class="section" data-animate>
+      <h2 class="section-title" data-i18n="clinic.experience">Patientenerfahrung</h2>
+      <p class="body-large" id="clinic-testimonial">—</p>
+    </section>
+
+    <section class="section section-cta">
+      <h2 class="section-title" data-i18n="clinic.ctaTitle">Beratung anfragen</h2>
+      <p class="section-lead" id="clinic-cta-lead">—</p>
+      <a href="contact.html" class="btn btn-primary btn-large" data-i18n="hero.cta">Kostenlose Beratung anfragen</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">Baltic Health Travel</p>
+    <nav class="footer-nav" aria-label="Legal">
+      <a href="legal/impressum.html" data-i18n="footer.imprint">Impressum</a>
+      <a href="legal/privacy.html" data-i18n="footer.privacy">Datenschutz</a>
+      <a href="legal/terms.html" data-i18n="footer.terms">AGB</a>
+    </nav>
+    <p class="footer-legal" data-i18n="footer.copyright">© 2025 Baltic Health Travel. Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+  <script>
+    (function() {
+      var data = {
+        riga: {
+          title: 'Baltic Medical Center Riga',
+          lead: 'Zahnmedizin & Implantologie · Riga, Lettland',
+          heroBg: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(6).jpg',
+          overview: 'Das Baltic Medical Center Riga ist eine zertifizierte Klinik mit Schwerpunkt Zahnmedizin und Implantologie. Moderne Ausstattung, erfahrene Fachärzte und deutschsprachige Betreuung.',
+          equipment: 'Moderne Behandlungsräume, digitales Röntgen, OP-Bereich für implantologische Eingriffe. Sterilisationsstandards nach EU-Richtlinien.',
+          certs: ['ISO 9001 (Qualitätsmanagement)', 'EU-Medizinprodukte-Verordnung (MDR)', 'Lettische Zahnärztekammer', 'Deutschsprachige Patientenbetreuung'],
+          testimonial: 'Von der Anreise bis zur Nachsorge: Wir koordinieren Termine, Übersetzung und Rückfragen. Die Klinik bietet Abholservice und deutschsprachige Ansprechpartner.',
+          ctaLead: 'Wir vermitteln Sie unverbindlich an das Baltic Medical Center Riga.',
+          doctors: [
+            { name: 'Dr. med. dent. [Name]', spec: 'Zahnmedizin, Implantologie', exp: '14 Jahre', treatments: 'über 3.200 Implantate', cert: 'DGZI, EAO', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(9).jpg' },
+            { name: 'Dr. med. dent. [Name]', spec: 'Zahnmedizin, Ästhetik & Prothetik', exp: '11 Jahre', treatments: 'über 2.100 Kronen & Veneers', cert: 'DGPro, ESCD', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(10).jpg' }
+          ]
+        },
+        vilnius: {
+          title: 'Vilnius Advanced Clinic',
+          lead: 'Zahnmedizin, Ästhetik & Fruchtbarkeit · Vilnius, Litauen',
+          heroBg: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(7).jpg',
+          overview: 'Die Vilnius Advanced Clinic vereint Zahnmedizin, ästhetische Behandlungen und Reproduktionsmedizin. Moderne Ausstattung und deutschsprachige Betreuung.',
+          equipment: 'Eigene Labore, moderner OP-Bereich, Kinderwunschzentrum mit Kryobank. EU-Standards.',
+          certs: ['ISO 9001', 'Litauische Gesundheitsbehörde', 'Deutschsprachige Patientenbetreuung'],
+          testimonial: 'Koordination von Anreise, Unterkunft und Terminen. Diskret und vertraulich.',
+          ctaLead: 'Wir vermitteln Sie unverbindlich an die Vilnius Advanced Clinic.',
+          doctors: [
+            { name: 'Dr. [Name]', spec: 'Zahnmedizin, Ästhetik', exp: '12 Jahre', treatments: '', cert: 'EU-anerkannt', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(9).jpg' },
+            { name: 'Dr. [Name]', spec: 'Reproduktionsmedizin', exp: '15 Jahre', treatments: '', cert: 'ESHRE', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(10).jpg' }
+          ]
+        },
+        tallinn: {
+          title: 'Tallinn Medical Institute',
+          lead: 'Orthopädie & Plastische Chirurgie · Tallinn, Estland',
+          heroBg: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(8).jpg',
+          overview: 'Das Tallinn Medical Institute ist auf Orthopädie und Plastische Chirurgie spezialisiert. Moderne OP-Säle, erfahrene Fachärzte und deutschsprachige Betreuung.',
+          equipment: 'Moderne OP-Säle für Orthopädie und Plastische Chirurgie, Intensiv- und Stationärbereich. EU-Standards.',
+          certs: ['ISO 9001', 'Estnische Gesundheitsaufsicht', 'Deutschsprachige Patientenbetreuung'],
+          testimonial: 'Abholservice, Koordination von Aufenthalt und Nachsorge. Transparente Kosten.',
+          ctaLead: 'Wir vermitteln Sie unverbindlich an das Tallinn Medical Institute.',
+          doctors: [
+            { name: 'Dr. [Name]', spec: 'Orthopädie, Gelenkchirurgie', exp: '18 Jahre', treatments: 'über 2.000 TEP', cert: '', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(10).jpg' },
+            { name: 'Dr. [Name]', spec: 'Plastische & Ästhetische Chirurgie', exp: '14 Jahre', treatments: '', cert: 'Fachgesellschaft', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(11).jpg' }
+          ]
+        }
+      };
+
+      var id = (function() {
+        var m = /[?&]id=([^&]+)/.exec(window.location.search);
+        return (m && m[1]) ? m[1].toLowerCase() : 'riga';
+      })();
+      var clinic = data[id] || data.riga;
+
+      document.getElementById('clinic-title').textContent = clinic.title;
+      document.getElementById('clinic-lead').textContent = clinic.lead;
+      document.getElementById('clinic-hero-bg').style.backgroundImage = 'url(' + clinic.heroBg + ')';
+      document.getElementById('clinic-overview').textContent = clinic.overview;
+      document.getElementById('clinic-equipment').textContent = clinic.equipment;
+      document.getElementById('clinic-testimonial').textContent = clinic.testimonial;
+      document.getElementById('clinic-cta-lead').textContent = clinic.ctaLead;
+      document.title = clinic.title + ' | Baltic Health Travel';
+
+      var certList = document.getElementById('clinic-certs');
+      clinic.certs.forEach(function(c) {
+        var li = document.createElement('li');
+        li.className = 'cert-item';
+        li.textContent = c;
+        certList.appendChild(li);
+      });
+
+      var docGrid = document.getElementById('clinic-doctors');
+      clinic.doctors.forEach(function(d) {
+        var art = document.createElement('article');
+        art.className = 'doctor-card';
+        art.innerHTML = '<div class="doctor-card-image-wrap"><img src="' + d.img + '" alt="" class="doctor-card-image-img" width="400" height="300" /></div><div class="doctor-card-body"><h3 class="doctor-name">' + d.name + '</h3><p class="doctor-specialization">' + d.spec + '</p><ul class="doctor-meta"><li><strong>Erfahrung:</strong> ' + d.exp + '</li>' + (d.treatments ? '<li><strong>Behandlungen:</strong> ' + d.treatments + '</li>' : '') + (d.cert ? '<li><strong>Zertifizierungen:</strong> ' + d.cert + '</li>' : '') + '</ul></div>';
+        docGrid.appendChild(art);
+      });
+    })();
+  </script>
+  <script>document.querySelectorAll('.lang-switcher [data-lang]').forEach(function(b){ b.addEventListener('click',function(){ var l=this.getAttribute('data-lang'); if(window.BHT&&window.BHT.i18n) window.BHT.i18n.setLang(l); }); });</script>
+</body>
+</html>

@@ -320,6 +320,8 @@ function renderPendingConfirmationCard() {
   var body = t('confirmEmailBody').replace(/\{email\}/g, email);
   return (
     '<div class="portal-card portal-card--pending">' +
+    '<div class="portal-card__accent"></div>' +
+    '<div class="portal-card__inner">' +
     '<div class="portal-pending-icon" aria-hidden="true">' +
     '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="1.5"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
     '</div>' +
@@ -348,7 +350,7 @@ function renderPendingConfirmationCard() {
     esc(t('confirmEmailToLogin')) +
     '</button>' +
     '</div>' +
-    '</div>'
+    '</div></div>'
   );
 }
 
@@ -360,6 +362,9 @@ function renderAuthCard() {
   var regActive = state.authTab === 'register' ? ' portal-btn--primary' : ' portal-btn--ghost';
   return (
     '<div class="portal-card">' +
+    '<div class="portal-card__accent"></div>' +
+    '<div class="portal-card__inner">' +
+    '<div class="portal-eyebrow">' + esc(t('stepAuth')) + '</div>' +
     '<h1>' +
     esc(t('authTitle')) +
     '</h1>' +
@@ -373,7 +378,7 @@ function renderAuthCard() {
         esc(state.message) +
         '</div>'
       : '') +
-    '<div class="portal-actions" style="margin-bottom:0">' +
+    '<div class="portal-auth-tabs">' +
     '<button type="button" class="portal-btn' +
     loginActive +
     '" data-auth-tab="login">' +
@@ -385,7 +390,7 @@ function renderAuthCard() {
     esc(t('tabRegister')) +
     '</button>' +
     '</div>' +
-    '<form class="portal-auth-form" style="margin-top:1.25rem">' +
+    '<form class="portal-auth-form" style="margin-top:1.5rem">' +
     (state.authTab === 'register'
       ? '<div class="portal-field"><label for="pf-name">' +
         esc(t('fullName')) +
@@ -405,7 +410,7 @@ function renderAuthCard() {
     '</button>' +
     '</div>' +
     '</form>' +
-    '</div>'
+    '</div></div>'
   );
 }
 
@@ -427,7 +432,10 @@ function renderIntakeCard() {
   var v = intakeValues();
   return (
     '<div class="portal-card">' +
+    '<div class="portal-card__accent"></div>' +
+    '<div class="portal-card__inner">' +
     renderStepper() +
+    '<div class="portal-eyebrow">' + esc(t('stepIntake')) + '</div>' +
     '<h1>' +
     esc(t('intakeTitle')) +
     '</h1>' +
@@ -474,6 +482,9 @@ function renderIntakeCard() {
     esc(t('treatmentOther')) +
     '</option>' +
     '</select></div>' +
+    '<div class="portal-divider"></div>' +
+    '<div class="portal-legend">' + esc(t('country')) + ' & ' + esc(t('phone')) + '</div>' +
+    '<div class="portal-row-split">' +
     '<div class="portal-field"><label for="in-country">' +
     esc(t('country')) +
     '</label><input type="text" id="in-country" name="country" value="' +
@@ -484,6 +495,8 @@ function renderIntakeCard() {
     '</label><input type="tel" id="in-phone" name="phone" value="' +
     esc(v.phone) +
     '" autocomplete="tel" /></div>' +
+    '</div>' +
+    '<div class="portal-row-split">' +
     '<div class="portal-field"><label for="in-lang">' +
     esc(t('preferredLang')) +
     '</label><select id="in-lang" name="preferred_language">' +
@@ -505,6 +518,8 @@ function renderIntakeCard() {
     '" placeholder="' +
     esc(t('referralPlaceholder')) +
     '" /></div>' +
+    '</div>' +
+    '<div class="portal-divider"></div>' +
     '<label class="portal-check"><input type="checkbox" name="consent_terms" value="1"' +
     (v.consent_terms ? ' checked' : '') +
     ' required /><span>' +
@@ -521,21 +536,49 @@ function renderIntakeCard() {
     esc(t('consentHealth')) +
     '</span></label>' +
     '<div class="portal-actions">' +
-    '<button type="button" class="portal-btn portal-btn--ghost" data-step="1">' +
-    esc(t('back')) +
-    '</button>' +
     '<button type="submit" class="portal-btn portal-btn--primary">' +
     esc(t('saveContinue')) +
     '</button>' +
     '</div>' +
     '</form>' +
-    '</div>'
+    '</div></div>'
   );
 }
 
 function renderClinicCard() {
   var c = state.cases && state.cases[0];
-  var body =
+  var detail = '';
+  if (!c) {
+    detail = '<p class="portal-muted" style="margin-top:0">' + esc(t('clinicPending')) + '</p>';
+  } else {
+    var cn = (c.clinics && c.clinics.name) || '—';
+    detail =
+      '<div class="portal-divider"></div>' +
+      '<p style="margin:0 0 0.5rem"><strong>' +
+      esc(t('clinicAssigned')) +
+      ':</strong> ' +
+      esc(cn) +
+      '</p>' +
+      '<p class="portal-muted" style="margin:0 0 0.35rem"><strong>' +
+      esc(t('treatmentPlanId')) +
+      ':</strong> ' +
+      esc(c.treatment_plan_id || '—') +
+      '</p>' +
+      '<p class="portal-muted" style="margin:0"><strong>' +
+      esc(t('status')) +
+      ':</strong> ' +
+      esc(c.status) +
+      '</p>';
+  }
+  return (
+    '<div class="portal-card">' +
+    '<div class="portal-card__accent"></div>' +
+    '<div class="portal-card__inner">' +
+    renderStepper() +
+    '<div class="portal-eyebrow">' + esc(t('stepClinic')) + '</div>' +
+    '<h1>' +
+    esc(t('clinicTitle')) +
+    '</h1>' +
     '<p class="portal-lead">' +
     esc(t('clinicLead')) +
     '</p>' +
@@ -545,35 +588,8 @@ function renderClinicCard() {
         '">' +
         esc(state.message) +
         '</div>'
-      : '');
-  if (!c) {
-    body += '<p class="portal-muted">' + esc(t('clinicPending')) + '</p>';
-  } else {
-    var cn = (c.clinics && c.clinics.name) || '—';
-    body +=
-      '<p><strong>' +
-      esc(t('clinicAssigned')) +
-    ':</strong> ' +
-    esc(cn) +
-    '</p>' +
-    '<p class="portal-muted"><strong>' +
-    esc(t('treatmentPlanId')) +
-    ':</strong> ' +
-    esc(c.treatment_plan_id || '—') +
-    '</p>' +
-    '<p class="portal-muted"><strong>' +
-    esc(t('status')) +
-    ':</strong> ' +
-    esc(c.status) +
-    '</p>';
-  }
-  return (
-    '<div class="portal-card">' +
-    renderStepper() +
-    '<h1>' +
-    esc(t('clinicTitle')) +
-    '</h1>' +
-    body +
+      : '') +
+    detail +
     '<div class="portal-actions">' +
     '<button type="button" class="portal-btn portal-btn--ghost" data-step="2">' +
     esc(t('back')) +
@@ -582,7 +598,7 @@ function renderClinicCard() {
     esc(t('next')) +
     '</button>' +
     '</div>' +
-    '</div>'
+    '</div></div>'
   );
 }
 
@@ -618,7 +634,10 @@ function renderDocsCard() {
           .join('');
   return (
     '<div class="portal-card">' +
+    '<div class="portal-card__accent"></div>' +
+    '<div class="portal-card__inner">' +
     renderStepper() +
+    '<div class="portal-eyebrow">' + esc(t('stepDocs')) + '</div>' +
     '<h1>' +
     esc(t('docsTitle')) +
     '</h1>' +
@@ -632,24 +651,23 @@ function renderDocsCard() {
         esc(state.message) +
         '</div>'
       : '') +
-    '<h2 class="portal-field" style="font-size:1rem;margin-top:1.5rem">' +
-    esc(t('uploadLabel')) +
-    '</h2>' +
-    '<p class="portal-muted">' +
+    '<div class="portal-divider"></div>' +
+    '<div class="portal-legend">' + esc(t('uploadLabel')) + '</div>' +
+    '<p class="portal-muted" style="margin:0 0 1rem">' +
     esc(t('uploadHint')) +
     '</p>' +
     '<div class="portal-field"><input type="file" id="file-up" accept=".pdf,.jpg,.jpeg,.png,.webp,.gif,.dcm,application/pdf,image/*" /></div>' +
-    '<div class="portal-actions"><button type="button" class="portal-btn portal-btn--primary" data-upload>' +
+    '<div class="portal-actions" style="margin-top:0.75rem"><button type="button" class="portal-btn portal-btn--primary" data-upload>' +
     esc(t('uploadSubmit')) +
     '</button></div>' +
-    '<h3 style="font-size:0.9375rem;margin-top:1.5rem">' +
-    esc(t('yourFiles')) +
-    '</h3>' +
+    '<div class="portal-divider"></div>' +
+    '<div class="portal-legend">' + esc(t('yourFiles')) + '</div>' +
     fileRows +
-    '<div id="print-zone" style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--color-border)">' +
-    '<h2 style="font-size:1rem">' +
+    '<div class="portal-divider"></div>' +
+    '<div id="print-zone">' +
+    '<div class="portal-legend">' +
     esc(t('questionnaireTitle')) +
-    '</h2>' +
+    '</div>' +
     '<form id="form-q">' +
     '<div class="portal-field"><label for="q-reason">' +
     esc(t('qReason')) +
@@ -707,7 +725,7 @@ function renderDocsCard() {
         '</p>'
       : '') +
     '</div>' +
-    '</div>'
+    '</div></div>'
   );
 }
 
@@ -735,6 +753,9 @@ function renderClinicDashboard() {
           .join('');
   return (
     '<div class="portal-card">' +
+    '<div class="portal-card__accent"></div>' +
+    '<div class="portal-card__inner">' +
+    '<div class="portal-eyebrow">Clinic Dashboard</div>' +
     '<h1>' +
     esc(t('clinicDashTitle')) +
     '</h1>' +
@@ -759,13 +780,13 @@ function renderClinicDashboard() {
     '</th></tr></thead><tbody>' +
     rows +
     '</tbody></table></div>' +
-    '</div>'
+    '</div></div>'
   );
 }
 
 function renderMainInner() {
   if (state.loading) {
-    return '<div class="portal-card"><p class="portal-muted">…</p></div>';
+    return '<div class="portal-card"><div class="portal-card__accent"></div><div class="portal-card__inner"><p class="portal-muted" style="margin:0;text-align:center">…</p></div></div>';
   }
   if (!state.user) return renderAuthCard();
   if (state.profile && state.profile.role === 'clinic_staff') return renderClinicDashboard();

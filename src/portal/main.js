@@ -151,24 +151,17 @@ async function refreshSession(sessionOverride) {
   state.loading = true;
   state.message = '';
   renderShell();
-  var profileBound = false;
   try {
     var session = null;
-    // signInWithPassword / signUp already call _saveSession; calling setSession first can fail
-    // (_getUser flake, clock skew) and is unnecessary. Read session from storage, then recover once.
-    var maxAttempts = sessionOverride ? 24 : 1;
-    for (var attempt = 0; attempt < maxAttempts; attempt++) {
-      var sessRes = await supabase.auth.getSession();
-      session = sessRes.data.session;
-      if (session && session.user) break;
-      if (attempt < maxAttempts - 1) {
-        await new Promise(function (r) {
-          setTimeout(r, 50);
-        });
-      }
-    }
+
+    // When called right after signInWithPassword / signUp, the session is already
+    // persisted by the auth client. Just read it.
+    var sessRes = await supabase.auth.getSession();
+    session = sessRes.data && sessRes.data.session ? sessRes.data.session : null;
+
+    // If the caller gave us explicit tokens and getSession still found nothing, try setSession once.
     if (
-      (!session || !session.user) &&
+      !session &&
       sessionOverride &&
       sessionOverride.access_token &&
       sessionOverride.refresh_token
@@ -177,16 +170,29 @@ async function refreshSession(sessionOverride) {
         access_token: sessionOverride.access_token,
         refresh_token: sessionOverride.refresh_token,
       });
-      if (setRes.error) console.warn('Supabase setSession (fallback):', setRes.error);
       if (!setRes.error && setRes.data && setRes.data.session) {
         session = setRes.data.session;
       }
     }
+
     state.user = session && session.user ? session.user : null;
+
     if (state.user) {
       state.authPendingEmail = null;
+
+      // --- profile ---
       var p = await supabase.from('profiles').select('*').eq('id', state.user.id).maybeSingle();
-      if (p.error) throw p.error;
+      if (p.error) {
+        console.error('profiles select', p.error);
+        state.profile = null;
+        state.message = p.error.message || t('errorGeneric');
+        state.messageOk = false;
+        state.step = 2;
+        persistStep(2);
+        state.loading = false;
+        renderShell();
+        return;
+      }
       if (!p.data) {
         var meta = state.user.user_metadata || {};
         var up = await supabase.from('profiles').upsert(
@@ -199,16 +205,32 @@ async function refreshSession(sessionOverride) {
           },
           { onConflict: 'id' }
         );
-        if (up.error) throw { code: 'PROFILE_SETUP', cause: up.error };
+        if (up.error) {
+          console.error('profiles upsert', up.error);
+          state.profile = null;
+          state.message = up.error.message || t('errorProfileSync');
+          state.messageOk = false;
+          state.step = 2;
+          persistStep(2);
+          state.loading = false;
+          renderShell();
+          return;
+        }
         p = await supabase.from('profiles').select('*').eq('id', state.user.id).maybeSingle();
-        if (p.error) throw p.error;
-        if (!p.data) throw { code: 'PROFILE_SETUP' };
       }
-      state.profile = p.data;
-      profileBound = true;
+      state.profile = p.data || null;
+
+      // --- role routing ---
       if (state.profile && state.profile.role === 'clinic_staff') {
         if (state.profile.clinic_id) {
-          await loadClinicBundle(supabase, state.profile.clinic_id);
+          try {
+            await loadClinicBundle(supabase, state.profile.clinic_id);
+          } catch (err) {
+            console.error('loadClinicBundle', err);
+            state.cases = [];
+            state.message = err && err.message ? String(err.message) : t('errorGeneric');
+            state.messageOk = false;
+          }
         } else {
           state.cases = [];
           state.message = t('clinicStaffNoClinic');
@@ -251,42 +273,9 @@ async function refreshSession(sessionOverride) {
       } catch (_) {}
     }
   } catch (e) {
-    console.error(e);
-    if (e && e.code === 'PROFILE_SETUP') {
-      state.message = t('errorProfileSync');
-      state.messageOk = false;
-      state.user = null;
-      state.profile = null;
-      state.intake = null;
-      state.cases = [];
-      state.questionnaire = null;
-      state.files = [];
-      state.step = 1;
-      try {
-        sessionStorage.removeItem(STEP_KEY);
-      } catch (_) {}
-      try {
-        await supabase.auth.signOut();
-      } catch (_) {}
-    } else {
-      state.message = t('errorGeneric');
-      state.messageOk = false;
-      if (!profileBound) {
-        state.user = null;
-        state.profile = null;
-        state.intake = null;
-        state.cases = [];
-        state.questionnaire = null;
-        state.files = [];
-        state.step = 1;
-        try {
-          sessionStorage.removeItem(STEP_KEY);
-        } catch (_) {}
-        try {
-          await supabase.auth.signOut();
-        } catch (_) {}
-      }
-    }
+    console.error('refreshSession', e);
+    state.message = (e && e.message) || t('errorGeneric');
+    state.messageOk = false;
   }
   state.loading = false;
   renderShell();
@@ -780,10 +769,9 @@ function renderMainInner() {
   }
   if (!state.user) return renderAuthCard();
   if (state.profile && state.profile.role === 'clinic_staff') return renderClinicDashboard();
-  if (state.step === 2) return renderIntakeCard();
   if (state.step === 3) return renderClinicCard();
   if (state.step === 4) return renderDocsCard();
-  return renderAuthCard();
+  return renderIntakeCard();
 }
 
 function renderShell() {
@@ -1107,14 +1095,6 @@ function bindLangSwitcher() {
 
 getSupabase();
 syncLangFromSite();
-
-if (isConfigured()) {
-  getSupabase().auth.onAuthStateChange(function (event) {
-    if (event === 'SIGNED_OUT') {
-      refreshSession();
-    }
-  });
-}
 
 document.addEventListener('DOMContentLoaded', function () {
   var root = document.getElementById('portal-root');

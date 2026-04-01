@@ -508,12 +508,12 @@ function renderIntakeCard() {
     '<label class="portal-check"><input type="checkbox" name="consent_terms" value="1"' +
     (v.consent_terms ? ' checked' : '') +
     ' required /><span>' +
-    esc(t('consentTerms')) +
+    t('consentTerms') +
     '</span></label>' +
     '<label class="portal-check"><input type="checkbox" name="consent_privacy" value="1"' +
     (v.consent_privacy ? ' checked' : '') +
     ' required /><span>' +
-    esc(t('consentPrivacy')) +
+    t('consentPrivacy') +
     '</span></label>' +
     '<label class="portal-check"><input type="checkbox" name="consent_health_data" value="1"' +
     (v.consent_health_data ? ' checked' : '') +

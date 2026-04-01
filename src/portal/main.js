@@ -256,9 +256,9 @@ async function refreshSession(sessionOverride) {
         } else if (saved != null) {
           state.step = saved;
         } else if (!state.cases || state.cases.length === 0) {
-          state.step = 3;
-        } else {
           state.step = 4;
+        } else {
+          state.step = 3;
         }
       }
     } else {
@@ -304,12 +304,12 @@ function renderStepper() {
     '<li class="portal-step ' +
     stepClass(3) +
     '"><span class="portal-step-num">3</span> ' +
-    esc(t('stepClinic')) +
+    esc(t('stepDocs')) +
     '</li>' +
     '<li class="portal-step ' +
     stepClass(4) +
     '"><span class="portal-step-num">4</span> ' +
-    esc(t('stepDocs')) +
+    esc(t('stepClinic')) +
     '</li>' +
     '</ol>'
   );
@@ -591,11 +591,8 @@ function renderClinicCard() {
       : '') +
     detail +
     '<div class="portal-actions">' +
-    '<button type="button" class="portal-btn portal-btn--ghost" data-step="2">' +
+    '<button type="button" class="portal-btn portal-btn--ghost" data-step="3">' +
     esc(t('back')) +
-    '</button>' +
-    '<button type="button" class="portal-btn portal-btn--primary" data-step="4">' +
-    esc(t('next')) +
     '</button>' +
     '</div>' +
     '</div></div>'
@@ -705,7 +702,7 @@ function renderDocsCard() {
     esc(t('qConfirm')) +
     '</span></label>' +
     '<div class="portal-actions">' +
-    '<button type="button" class="portal-btn portal-btn--ghost" data-step="3">' +
+    '<button type="button" class="portal-btn portal-btn--ghost" data-step="2">' +
     esc(t('back')) +
     '</button>' +
     '<button type="submit" class="portal-btn portal-btn--primary">' +
@@ -724,6 +721,12 @@ function renderDocsCard() {
         esc(primaryCase.id) +
         '</p>'
       : '') +
+    '<div class="portal-divider"></div>' +
+    '<div class="portal-actions">' +
+    '<button type="button" class="portal-btn portal-btn--primary" data-step="4">' +
+    esc(t('next')) +
+    '</button>' +
+    '</div>' +
     '</div>' +
     '</div></div>'
   );
@@ -790,8 +793,8 @@ function renderMainInner() {
   }
   if (!state.user) return renderAuthCard();
   if (state.profile && state.profile.role === 'clinic_staff') return renderClinicDashboard();
-  if (state.step === 3) return renderClinicCard();
-  if (state.step === 4) return renderDocsCard();
+  if (state.step === 3) return renderDocsCard();
+  if (state.step === 4) return renderClinicCard();
   return renderIntakeCard();
 }
 
@@ -990,6 +993,7 @@ function bindMainHandlers() {
         state.step = 3;
         persistStep(3);
         renderShell();
+
       } catch (e) {
         console.error(e);
         state.message = e.message || t('errorGeneric');

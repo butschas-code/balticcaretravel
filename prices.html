@@ -3,27 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Preise und Ersparnis: Kostenvergleich Deutschland vs. Baltikum für Zahnmedizin, Orthopädie, Fruchtbarkeit und Plastische Chirurgie." />
-  <title data-i18n-title="prices.title">Preise &amp; Ersparnis | Baltic Health Travel</title>
+  <meta name="description" content="Preise & Transparenz bei Baltic Care Travel: Koordination 250 €, Behandlung direkt mit der Klinik. Orientierungswerte Deutschland vs. Lettland." />
+  <title data-i18n-title="prices.pageTitle" data-i18n-title-mode="full">Preise &amp; Transparenz | Baltic Care Travel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="home.css" />
 </head>
-<body>
+<body class="page-prices">
+
   <header class="site-header">
     <nav class="nav">
-      <a href="index.html" class="nav-logo">Baltic Health Travel</a>
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.png" alt="Baltic Care Travel" height="48" class="nav-logo-img" />
+      </a>
+
       <ul class="nav-links">
-        <li><a href="index.html" data-i18n="nav.home">Startseite</a></li>
-        <li><a href="treatments.html" data-i18n="nav.treatments">Behandlungen</a></li>
+        <li><a href="how-it-works.html" data-i18n="nav.howItWorks">So funktioniert es</a></li>
+        <li class="nav-dropdown-item">
+          <button type="button" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            <span data-i18n="nav.treatments">Behandlungen</span>
+            <svg class="nav-dropdown-chevron" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+              <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <ul class="nav-dropdown" role="menu">
+            <li role="none"><a href="treatment-dental.html" data-i18n="nav.dental" role="menuitem">Zahnbehandlung</a></li>
+            <li role="none"><a href="treatment-fertility.html" data-i18n="nav.fertility" role="menuitem">Kinderwunsch / IVF</a></li>
+            <li role="none"><a href="treatment-orthopedic.html" data-i18n="nav.ortho" role="menuitem">Orthopädie</a></li>
+          </ul>
+        </li>
         <li><a href="clinics.html" data-i18n="nav.clinics">Kliniken</a></li>
-        <li><a href="how-it-works.html" data-i18n="nav.process">Ablauf</a></li>
         <li><a href="prices.html" data-i18n="nav.prices">Preise</a></li>
-        <li><a href="patient-stories.html" data-i18n="nav.stories">Erfahrungen</a></li>
+        <li><a href="about.html" data-i18n="nav.about">Über uns</a></li>
         <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
-        <li><a href="contact.html" data-i18n="nav.contact">Kontakt</a></li>
       </ul>
+
+      <div class="nav-ctas">
+        <a href="login.html" class="nav-cta-secondary" data-i18n="nav.login">Anmelden</a>
+        <a href="contact.html" class="nav-cta-btn" data-i18n="nav.contact">Kontakt</a>
+      </div>
+      <a href="contact.html" class="nav-mobile-cta" data-i18n="nav.cta">Erstgespräch</a>
+
       <div class="lang-switcher" role="group" aria-label="Language">
         <button type="button" class="lang-switcher-btn" data-lang="de" aria-current="true">DE</button>
         <span class="lang-switcher-sep" aria-hidden="true"></span>
@@ -33,86 +55,282 @@
   </header>
 
   <main>
-    <section class="page-hero">
-      <div class="page-hero-bg" style="background-image: url('images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(3).jpg');" aria-hidden="true"></div>
-      <div class="page-hero-inner">
-        <h1 class="page-hero-title" data-i18n="prices.title">Preise &amp; Ersparnis</h1>
-        <p class="page-hero-lead" data-i18n="prices.lead">Kostenvergleich Deutschland vs. Baltikum. Orientierungswerte für häufige Behandlungen.</p>
+
+    <section class="hero hero-home hero-with-bg page-prices-hero" aria-labelledby="prices-hero-title">
+      <div class="hero-bg hero-bg-home" style="background-image: url('images/prices-hero.jpg');" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="hero-inner hero-inner-home">
+        <h1 id="prices-hero-title" class="hero-title hero-title-home" data-i18n="prices.heroTitle">Kosten verstehen. Entscheidungen sicherer treffen.</h1>
+        <p class="hero-subtitle" data-i18n="prices.heroSub">Damit Sie von Anfang an wissen, welche Leistungen über uns laufen und welche direkt mit der Klinik vereinbart werden.</p>
+        <div class="hero-actions hero-actions-home">
+          <a href="contact.html" class="btn-hero-primary" data-i18n="home.heroCta1">Kostenfreies Erstgespräch</a>
+          <a href="#prices-intro" class="btn-hero-ghost" data-i18n="prices.heroScrollCta">Zum Überblick</a>
+        </div>
+      </div>
+
+      <a href="#prices-intro" class="hero-scroll-hint" aria-label="Weiterlesen">
+        <span class="hero-scroll-arrow" aria-hidden="true">↓</span>
+      </a>
+    </section>
+
+    <section class="section section-prices-intro" id="prices-intro" data-animate>
+      <div class="prices-intro-inner">
+        <span class="section-eyebrow" data-i18n="prices.introEyebrow">Einordnung</span>
+        <h2 class="prices-intro-title" data-i18n="prices.introTitle">Klarheit bei Leistungen und Kosten</h2>
+        <p class="prices-intro-lead" data-i18n="prices.introLead">
+          Wer eine Behandlung in Lettland in Betracht zieht, möchte früh verstehen, welche Kosten wofür entstehen und wie der Ablauf aufgebaut ist. Deshalb trennen wir unsere koordinierende Leistung klar von den medizinischen Leistungen der jeweiligen Klinik.
+        </p>
       </div>
     </section>
 
-    <section class="section" data-animate>
-      <h2 class="section-title" data-i18n="prices.whyTitle">Warum sind die Kosten im Baltikum oft niedriger?</h2>
-      <p class="body-large" data-i18n="prices.whyText">Die Lebenshaltungs- und Personalkosten in Lettland, Litauen und Estland liegen unter denen in Deutschland. Kliniken können dadurch bei gleichen Qualitätsstandards (EU-Normen, zertifizierte Ärzte, moderne Ausstattung) günstigere Preise anbieten. Die medizinische Qualität wird nicht eingeschränkt — alle von uns empfohlenen Kliniken erfüllen EU-Standards. Dies ist Platzhaltertext für eine ausführlichere Erklärung.</p>
-    </section>
+    <section class="section section-prices-model" data-animate aria-labelledby="prices-model-title">
+      <div class="section-header-centered section-prices-model__header">
+        <span class="section-eyebrow" data-i18n="prices.modelEyebrow">Preismodell</span>
+      </div>
 
-    <section class="section section-alt" data-animate>
-      <h2 class="section-title" data-i18n="prices.tableTitle">Preisvergleich (Orientierungswerte)</h2>
-      <p class="section-lead" data-i18n="prices.tableLead">Die folgenden Angaben dienen als Platzhalter. Individuelle Angebote erhalten Sie nach Prüfung Ihrer Unterlagen von der Klinik.</p>
-      <div class="table-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Behandlung</th>
-              <th>Deutschland (ca.)</th>
-              <th>Baltikum (ca.)</th>
-              <th>Ersparnis (ca.)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="Behandlung">Zahnimplantat (einzeln)</td>
-              <td data-label="Deutschland">3.000 €</td>
-              <td data-label="Baltikum">1.200 €</td>
-              <td data-label="Ersparnis">1.800 €</td>
-            </tr>
-            <tr>
-              <td data-label="Behandlung">Hüft-TEP</td>
-              <td data-label="Deutschland">20.000 €</td>
-              <td data-label="Baltikum">9.000 €</td>
-              <td data-label="Ersparnis">11.000 €</td>
-            </tr>
-            <tr>
-              <td data-label="Behandlung">Knie-TEP</td>
-              <td data-label="Deutschland">18.000 €</td>
-              <td data-label="Baltikum">8.500 €</td>
-              <td data-label="Ersparnis">9.500 €</td>
-            </tr>
-            <tr>
-              <td data-label="Behandlung">IVF-Zyklus</td>
-              <td data-label="Deutschland">4.500 €</td>
-              <td data-label="Baltikum">2.800 €</td>
-              <td data-label="Ersparnis">1.700 €</td>
-            </tr>
-            <tr>
-              <td data-label="Behandlung">Brustvergrößerung</td>
-              <td data-label="Deutschland">6.000 €</td>
-              <td data-label="Baltikum">3.200 €</td>
-              <td data-label="Ersparnis">2.800 €</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="prices-model-grid">
+        <article class="prices-fee-card">
+          <div class="prices-fee-card__accent" aria-hidden="true"></div>
+          <div class="prices-fee-card__body">
+            <h3 id="prices-model-title" class="prices-fee-card__title" data-i18n="prices.coordTitle">Unsere Patientenkoordination</h3>
+            <p class="prices-fee-card__fee-intro" data-i18n="prices.coordFeeIntro">
+              Für die strukturierte Begleitung Ihres Falls berechnen wir 250 € einmalig, nicht erstattungsfähig.
+            </p>
+            <p class="prices-fee-card__included-label" data-i18n="prices.coordIncludedLabel">Darin enthalten sind:</p>
+            <ul class="prices-fee-list" role="list">
+              <li data-i18n="prices.coordItem1">erste Einordnung Ihres Anliegens</li>
+              <li data-i18n="prices.coordItem2">deutschsprachige Kommunikation</li>
+              <li data-i18n="prices.coordItem3">strukturierte Erfassung Ihrer Angaben und Unterlagen</li>
+              <li data-i18n="prices.coordItem4">Koordination mit passenden Klinikpartnern</li>
+              <li data-i18n="prices.coordItem5">Klinik-Matching</li>
+              <li data-i18n="prices.coordItem6">Rückfragen- und Angebotskoordination</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="prices-treatment-card">
+          <h3 class="prices-treatment-card__title" data-i18n="prices.treatmentTitle">Medizinische Leistungen</h3>
+          <div class="prices-treatment-card__prose">
+            <p data-i18n="prices.treatmentP1">
+              Behandlung, medizinische Beratung, Vertragsbeziehung und Abrechnung erfolgen immer direkt über die jeweilige Klinik.
+            </p>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="section section-cta">
-      <h2 class="section-title" data-i18n="prices.ctaTitle">Individuelles Angebot anfragen</h2>
-      <p class="section-lead" data-i18n="prices.ctaLead">Für ein verbindliches Angebot senden Sie uns Ihre Anfrage. Wir leiten sie an die passende Klinik weiter.</p>
-      <a href="contact.html" class="btn btn-primary btn-large" data-i18n="hero.cta">Kostenlose Beratung anfragen</a>
+    <section class="section section-prices-table" data-animate aria-labelledby="prices-table-title">
+      <div class="prices-table-panel">
+        <div class="prices-table-panel__head">
+          <span class="section-eyebrow" data-i18n="prices.tableEyebrow">Orientierung</span>
+          <h2 id="prices-table-title" class="section-title" data-i18n="prices.tableTitle">Orientierungswerte für ausgewählte Behandlungen</h2>
+          <p class="section-lead prices-table-panel__lead" data-i18n="prices.tableLead">Die folgende Übersicht zeigt beispielhafte Klinikpreise in Lettland sowie deutsche High-End-Benchmarkpreise für vergleichbare Privatleistungen. Uns ist wichtig, Unterschiede transparent darzustellen: Gerade bei Zahnmedizin und Kinderwunsch sind Vergleiche oft gut möglich, bei orthopädischen Eingriffen hängt die Aussagekraft stärker vom enthaltenen Leistungsumfang ab. Deshalb verstehen sich alle Angaben als erste Orientierung — die konkrete medizinische Einschätzung, das verbindliche Angebot und die Abrechnung erfolgen immer direkt über die jeweilige Klinik.</p>
+        </div>
+        <div class="prices-table-wrap">
+          <table class="comparison-table prices-comparison-table">
+            <thead>
+              <tr>
+                <th scope="col" data-i18n="prices.colCategory">Bereich</th>
+                <th scope="col" data-i18n="prices.colTreatment">Behandlung</th>
+                <th scope="col" data-i18n="prices.colLatviaFrom">Lettland</th>
+                <th scope="col" data-i18n="prices.colGermany">Deutschland (High-End Benchmark)</th>
+                <th scope="col" data-i18n="prices.colSavings">Mögliche Ersparnis</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="prices.r1c" data-i18n-attr="data-label:prices.colCategory">Zahnmedizin</td>
+                <td data-i18n="prices.r1t" data-i18n-attr="data-label:prices.colTreatment">Premium Einzelimplantat inkl. Krone</td>
+                <td data-i18n="prices.r1lv" data-i18n-attr="data-label:prices.colLatviaFrom">1.400 €</td>
+                <td data-i18n="prices.r1de" data-i18n-attr="data-label:prices.colGermany">4.000 €</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings" data-i18n="prices.r1s">2.600 €</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r2c" data-i18n-attr="data-label:prices.colCategory">Zahnmedizin</td>
+                <td data-i18n="prices.r2t" data-i18n-attr="data-label:prices.colTreatment">Premium Full-Arch All-on-4 Zirkon, 1 Kiefer</td>
+                <td data-i18n="prices.r2lv" data-i18n-attr="data-label:prices.colLatviaFrom">11.000 €</td>
+                <td data-i18n="prices.r2de" data-i18n-attr="data-label:prices.colGermany">15.000 €</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings" data-i18n="prices.r2s">4.000 €</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r3c" data-i18n-attr="data-label:prices.colCategory">Zahnmedizin</td>
+                <td data-i18n="prices.r3t" data-i18n-attr="data-label:prices.colTreatment">Premium Full-Arch All-on-6 Zirkon, 1 Kiefer</td>
+                <td data-i18n="prices.r3lv" data-i18n-attr="data-label:prices.colLatviaFrom">12.000 €</td>
+                <td data-i18n="prices.r3de" data-i18n-attr="data-label:prices.colGermany">18.000 €</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings" data-i18n="prices.r3s">6.000 €</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r4c" data-i18n-attr="data-label:prices.colCategory">Zahnmedizin</td>
+                <td data-i18n="prices.r4t" data-i18n-attr="data-label:prices.colTreatment">Smile Makeover – 8 Keramikveneers</td>
+                <td data-i18n="prices.r4lv" data-i18n-attr="data-label:prices.colLatviaFrom">4.800 €</td>
+                <td data-i18n="prices.r4de" data-i18n-attr="data-label:prices.colGermany">10.000 €</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings" data-i18n="prices.r4s">5.200 €</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r5c" data-i18n-attr="data-label:prices.colCategory">Kinderwunsch</td>
+                <td data-i18n="prices.r5t" data-i18n-attr="data-label:prices.colTreatment">ICSI-Zyklus ohne Embryotransfer</td>
+                <td data-i18n="prices.r5lv" data-i18n-attr="data-label:prices.colLatviaFrom">3.600 €</td>
+                <td data-i18n="prices.r5de" data-i18n-attr="data-label:prices.colGermany">5.500 €</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings" data-i18n="prices.r5s">1.900 €</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r6c" data-i18n-attr="data-label:prices.colCategory">Kinderwunsch</td>
+                <td data-i18n="prices.r6t" data-i18n-attr="data-label:prices.colTreatment">Lagerung von Embryonen / Eizellen / Sperma</td>
+                <td data-i18n="prices.r6lv" data-i18n-attr="data-label:prices.colLatviaFrom">240 €</td>
+                <td data-i18n="prices.r6de" data-i18n-attr="data-label:prices.colGermany">400 €</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings" data-i18n="prices.r6s">160 €</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r7c" data-i18n-attr="data-label:prices.colCategory">Kinderwunsch</td>
+                <td data-i18n="prices.r7t" data-i18n-attr="data-label:prices.colTreatment">ICSI + 1 Transfer</td>
+                <td data-i18n="prices.r7lv" data-i18n-attr="data-label:prices.colLatviaFrom">5.400 €</td>
+                <td data-i18n="prices.r7de" data-i18n-attr="data-label:prices.colGermany">6.500 €</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings" data-i18n="prices.r7s">1.100 €</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r8c" data-i18n-attr="data-label:prices.colCategory">Kinderwunsch</td>
+                <td data-i18n="prices.r8t" data-i18n-attr="data-label:prices.colTreatment">Eizellspende ohne Transfer</td>
+                <td data-i18n="prices.r8lv" data-i18n-attr="data-label:prices.colLatviaFrom">8.000 €</td>
+                <td class="prices-table-cell--note" data-i18n="prices.r8de" data-i18n-attr="data-label:prices.colGermany">kein sinnvoller Direktvergleich</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings prices-savings--na" data-i18n="prices.r8s">—</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r9c" data-i18n-attr="data-label:prices.colCategory">Kinderwunsch</td>
+                <td data-i18n="prices.r9t" data-i18n-attr="data-label:prices.colTreatment">Eizellspende + 1 Transfer</td>
+                <td data-i18n="prices.r9lv" data-i18n-attr="data-label:prices.colLatviaFrom">9.800 €</td>
+                <td class="prices-table-cell--note" data-i18n="prices.r9de" data-i18n-attr="data-label:prices.colGermany">kein sinnvoller Direktvergleich</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings prices-savings--na" data-i18n="prices.r9s">—</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r10c" data-i18n-attr="data-label:prices.colCategory">Kinderwunsch</td>
+                <td data-i18n="prices.r10t" data-i18n-attr="data-label:prices.colTreatment">Embryoadoption + PGT-A</td>
+                <td data-i18n="prices.r10lv" data-i18n-attr="data-label:prices.colLatviaFrom">5.500 €</td>
+                <td class="prices-table-cell--note" data-i18n="prices.r10de" data-i18n-attr="data-label:prices.colGermany">kein sinnvoller Direktvergleich</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings prices-savings--na" data-i18n="prices.r10s">—</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r11c" data-i18n-attr="data-label:prices.colCategory">Orthopädie</td>
+                <td data-i18n="prices.r11t" data-i18n-attr="data-label:prices.colTreatment">Knie-Endoprothese</td>
+                <td data-i18n="prices.r11lv" data-i18n-attr="data-label:prices.colLatviaFrom">ab 3.497 €</td>
+                <td data-i18n="prices.r11de" data-i18n-attr="data-label:prices.colGermany">11.500 €</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings" data-i18n="prices.r11s">ab 8.003 €</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r12c" data-i18n-attr="data-label:prices.colCategory">Orthopädie</td>
+                <td data-i18n="prices.r12t" data-i18n-attr="data-label:prices.colTreatment">Hüft-Endoprothese (OP only)</td>
+                <td data-i18n="prices.r12lv" data-i18n-attr="data-label:prices.colLatviaFrom">ab 2.875 €</td>
+                <td data-i18n="prices.r12de" data-i18n-attr="data-label:prices.colGermany">13.000 €</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings" data-i18n="prices.r12s">ab 10.125 €</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="prices.r13c" data-i18n-attr="data-label:prices.colCategory">Orthopädie</td>
+                <td data-i18n="prices.r13t" data-i18n-attr="data-label:prices.colTreatment">Wirbelsäulen-OP mit Stabilisierung</td>
+                <td class="prices-table-cell--note" data-i18n="prices.r13lv" data-i18n-attr="data-label:prices.colLatviaFrom">auf Anfrage / individuell</td>
+                <td data-i18n="prices.r13de" data-i18n-attr="data-label:prices.colGermany">29.000 €</td>
+                <td data-i18n-attr="data-label:prices.colSavings"><span class="prices-savings prices-savings--na" data-i18n="prices.r13s">—</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="prices-table-disclaimer" data-i18n="prices.tableDisclaimer">
+          Hinweis: Die genannten Preise dienen der ersten Orientierung. Die deutschen Werte sind High-End-Benchmarkpreise für vergleichbare Privatleistungen. Die tatsächlichen Kosten hängen in Deutschland wie in Lettland immer vom individuellen Befund, dem Behandlungsumfang, der Klinik und den enthaltenen Leistungen ab. Gerade bei orthopädischen Eingriffen sind öffentliche Preisangaben häufig nicht vollständig direkt vergleichbar. Behandlung, medizinische Einschätzung und Abrechnung erfolgen immer direkt über die jeweilige Klinik.
+        </p>
+      </div>
     </section>
+
+    <section class="section section-prices-concierge" data-animate aria-labelledby="prices-concierge-title">
+      <div class="section-header-centered">
+        <span class="section-eyebrow" data-i18n="prices.conciergeEyebrow">Optional</span>
+        <h2 id="prices-concierge-title" class="section-title" data-i18n="prices.conciergeTitle">Premium Concierge</h2>
+        <p class="section-lead" data-i18n="prices.conciergeLead">
+          Zusätzliche organisatorische Leistungen wie Transfer, Unterkunft oder Erholungsphase können künftig optional ergänzt werden.
+        </p>
+      </div>
+
+      <div class="prices-concierge-grid">
+        <article class="prices-concierge-card">
+          <div class="prices-concierge-card__image">
+            <img src="images/prices/concierge-airport-transfer.jpg" alt="" width="800" height="520" loading="lazy" data-i18n-attr="alt:prices.concierge1Alt" />
+          </div>
+          <div class="prices-concierge-card__body">
+            <h3 class="prices-concierge-card__title" data-i18n="prices.concierge1Title">Transfer &amp; Anreise</h3>
+            <p class="prices-concierge-card__desc" data-i18n="prices.concierge1Desc">Flughafen- und Hoteltransfers für einen entspannten Start in Riga.</p>
+          </div>
+        </article>
+        <article class="prices-concierge-card">
+          <div class="prices-concierge-card__image">
+            <img src="images/prices/concierge-riga-old-town.jpg" alt="" width="800" height="520" loading="lazy" data-i18n-attr="alt:prices.concierge2Alt" />
+          </div>
+          <div class="prices-concierge-card__body">
+            <h3 class="prices-concierge-card__title" data-i18n="prices.concierge2Title">Riga entdecken</h3>
+            <p class="prices-concierge-card__desc" data-i18n="prices.concierge2Desc">Stadtbummel und Erholung in der historischen Altstadt.</p>
+          </div>
+        </article>
+        <article class="prices-concierge-card">
+          <div class="prices-concierge-card__image">
+            <img src="images/prices/concierge-opera.jpg" alt="" width="800" height="520" loading="lazy" data-i18n-attr="alt:prices.concierge3Alt" />
+          </div>
+          <div class="prices-concierge-card__body">
+            <h3 class="prices-concierge-card__title" data-i18n="prices.concierge3Title">Kultur &amp; Abendprogramm</h3>
+            <p class="prices-concierge-card__desc" data-i18n="prices.concierge3Desc">Oper, Konzerte und ausgewählte Kulturhighlights.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-prices-note" data-animate>
+      <div class="prices-note-box">
+        <span class="prices-note-box__label" data-i18n="prices.noteLabel">Hinweis</span>
+        <p class="prices-note-box__text" data-i18n="prices.noteText">
+          Preise für Behandlungen hängen immer vom individuellen medizinischen Befund, dem Umfang der Behandlung und der Klinik ab.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-cta-final" id="consultation" data-animate>
+      <div class="cta-final-inner">
+        <p class="cta-final-eyebrow" data-i18n="nav.cta">Kostenlos &amp; unverbindlich</p>
+        <h2 class="cta-final-title" data-i18n="prices.ctaTitle">Fragen zu Kosten und Ablauf?</h2>
+        <p class="cta-final-subtitle" data-i18n="prices.ctaLead">
+          Wir ordnen Ihre Situation ein und erklären transparent, was über uns läuft — und was direkt mit der Klinik vereinbart wird.
+        </p>
+        <div class="cta-final-actions">
+          <a href="contact.html" class="btn-cta-primary" data-i18n="home.ctaCta1">Kostenfreies Erstgespräch</a>
+          <a href="contact.html" class="btn-cta-ghost" data-i18n="home.ctaCta2">Anfrage senden</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer">
-    <p class="footer-text">Baltic Health Travel</p>
-    <nav class="footer-nav" aria-label="Legal">
-      <a href="legal/impressum.html" data-i18n="footer.imprint">Impressum</a>
-      <a href="legal/privacy.html" data-i18n="footer.privacy">Datenschutz</a>
-      <a href="legal/terms.html" data-i18n="footer.terms">AGB</a>
-    </nav>
-    <p class="footer-legal" data-i18n="footer.copyright">© 2025 Baltic Health Travel. Alle Rechte vorbehalten.</p>
+  <footer class="site-footer site-footer-home">
+    <div class="footer-home-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <img src="images/logo.png" alt="Baltic Care Travel" height="36" class="nav-logo-img" />
+        </a>
+        <p class="footer-tagline" data-i18n="home.footerTagline">Behandlungskoordination · Lettland</p>
+      </div>
+      <a href="contact.html" class="footer-contact-btn" data-i18n="nav.contact">Kontakt</a>
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <a href="how-it-works.html" data-i18n="nav.howItWorks">So funktioniert es</a>
+        <a href="treatments.html" data-i18n="nav.treatments">Behandlungen</a>
+        <a href="clinics.html" data-i18n="nav.clinics">Kliniken</a>
+        <a href="prices.html" data-i18n="nav.prices">Preise</a>
+        <a href="about.html" data-i18n="nav.about">Über uns</a>
+        <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+        <a href="contact.html" data-i18n="nav.contact">Kontakt</a>
+        <a href="legal/impressum.html" data-i18n="nav.impressum">Impressum</a>
+        <a href="legal/privacy.html" data-i18n="nav.privacy">Datenschutz</a>
+        <a href="legal/terms.html" data-i18n="nav.terms">AGB</a>
+      </nav>
+      <p class="footer-legal" data-i18n="home.footerLegal">© 2025 Baltic Care Travel. Alle Rechte vorbehalten.</p>
+    </div>
   </footer>
-  <script src="i18n.js"></script>
-  <script src="script.js"></script>
-  <script>document.querySelectorAll('.lang-switcher [data-lang]').forEach(function(b){ b.addEventListener('click',function(){ var l=this.getAttribute('data-lang'); if(window.BHT&&window.BHT.i18n) window.BHT.i18n.setLang(l); }); });</script>
+
+  <script type="module" src="i18n.js"></script>
+  <script type="module" src="script.js"></script>
+
 </body>
 </html>

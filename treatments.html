@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Behandlungen im Baltikum: Zahnmedizin, Orthopädie, Fruchtbarkeit, Plastische Chirurgie. Überblick und typische Ersparnisse für deutsche Patienten." />
-  <title data-i18n-title="treatments.title">Behandlungen im Baltikum | Baltic Health Travel</title>
+  <meta name="description" content="Behandlungen in Lettland: Zahnmedizin, Orthopädie, Fruchtbarkeit, Plastische Chirurgie. Überblick und typische Ersparnisse für deutsche Patienten." />
+  <title data-i18n-title="treatments.title">Behandlungen in Lettland | Baltic Care Travel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -13,17 +13,37 @@
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a href="index.html" class="nav-logo">Baltic Health Travel</a>
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.png" alt="Baltic Care Travel" height="48" class="nav-logo-img" />
+      </a>
+
       <ul class="nav-links">
-        <li><a href="index.html" data-i18n="nav.home">Startseite</a></li>
-        <li><a href="treatments.html" data-i18n="nav.treatments">Behandlungen</a></li>
+        <li><a href="how-it-works.html" data-i18n="nav.howItWorks">So funktioniert es</a></li>
+        <li class="nav-dropdown-item">
+          <button type="button" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            <span data-i18n="nav.treatments">Behandlungen</span>
+            <svg class="nav-dropdown-chevron" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+              <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <ul class="nav-dropdown" role="menu">
+            <li role="none"><a href="treatment-dental.html" data-i18n="nav.dental" role="menuitem">Zahnbehandlung</a></li>
+            <li role="none"><a href="treatment-fertility.html" data-i18n="nav.fertility" role="menuitem">Kinderwunsch / IVF</a></li>
+            <li role="none"><a href="treatment-orthopedic.html" data-i18n="nav.ortho" role="menuitem">Orthopädie</a></li>
+          </ul>
+        </li>
         <li><a href="clinics.html" data-i18n="nav.clinics">Kliniken</a></li>
-        <li><a href="how-it-works.html" data-i18n="nav.process">Ablauf</a></li>
         <li><a href="prices.html" data-i18n="nav.prices">Preise</a></li>
-        <li><a href="patient-stories.html" data-i18n="nav.stories">Erfahrungen</a></li>
+        <li><a href="about.html" data-i18n="nav.about">Über uns</a></li>
         <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
-        <li><a href="contact.html" data-i18n="nav.contact">Kontakt</a></li>
       </ul>
+
+      <div class="nav-ctas">
+        <a href="login.html" class="nav-cta-secondary" data-i18n="nav.login">Anmelden</a>
+        <a href="contact.html" class="nav-cta-btn" data-i18n="nav.contact">Kontakt</a>
+      </div>
+      <a href="contact.html" class="nav-mobile-cta" data-i18n="nav.cta">Erstgespräch</a>
+
       <div class="lang-switcher" role="group" aria-label="Language">
         <button type="button" class="lang-switcher-btn" data-lang="de" aria-current="true">DE</button>
         <span class="lang-switcher-sep" aria-hidden="true"></span>
@@ -34,66 +54,66 @@
 
   <main>
     <section class="page-hero">
-      <div class="page-hero-bg" style="background-image: url('images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(1).jpg');" aria-hidden="true"></div>
+      <div class="page-hero-bg" style="background-image: url('images/riga.jpg');" aria-hidden="true"></div>
       <div class="page-hero-inner">
-        <h1 class="page-hero-title" data-i18n="treatments.title">Behandlungen im Baltikum</h1>
+        <h1 class="page-hero-title" data-i18n="treatments.title">Behandlungen in Lettland</h1>
         <p class="page-hero-lead" data-i18n="treatments.lead">Überblick über die wichtigsten Behandlungsbereiche: Zahnmedizin, Orthopädie, Fruchtbarkeit und Plastische Chirurgie. Alle Partnerkliniken erfüllen EU-Standards.</p>
       </div>
     </section>
 
     <section class="section" data-animate>
       <h2 class="section-title" data-i18n="treatments.areasTitle">Unsere Behandlungsbereiche</h2>
-      <p class="section-lead" data-i18n="treatments.areasLead">Wir vermitteln Sie an zertifizierte Kliniken in Lettland, Litauen und Estland. Die folgende Übersicht dient als Platzhalter und kann später durch redaktionelle Inhalte ersetzt werden.</p>
+      <p class="section-lead" data-i18n="treatments.areasLead">Wir vermitteln Sie an zertifizierte Kliniken in Riga und Lettland. Die folgende Übersicht dient als Platzhalter und kann später durch redaktionelle Inhalte ersetzt werden.</p>
 
       <div class="treatment-category-list">
         <article class="treatment-category-card">
           <div class="content-image">
-            <img src="images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(2).jpg" alt="Moderne Zahnarztpraxis" width="800" height="500" />
+            <img src="images/dental.jpg" alt="Moderne Zahnarztpraxis" width="800" height="500" />
           </div>
           <div class="treatment-category-body">
             <h3 class="treatment-category-title">Zahnmedizin</h3>
             <p class="treatment-category-desc">Umfassende zahnärztliche Versorgung von Implantologie über Ästhetik bis zur Chirurgie. Moderne Ausstattung und erfahrene Fachärzte. Typische Ersparnis gegenüber Deutschland: ca. 40–60 %.</p>
             <p class="treatment-category-procedures"><strong>Häufige Behandlungen (Platzhalter):</strong> Implantate, Kronen, Veneers, Wurzelbehandlung, Bleaching, Zahnchirurgie.</p>
-            <p class="treatment-category-savings"><strong>Beispiel Ersparnis (Platzhalter):</strong> Zahnimplantat Deutschland ca. 3.000 €, Baltikum ca. 1.200 €.</p>
+            <p class="treatment-category-savings"><strong>Beispiel Ersparnis (Platzhalter):</strong> Zahnimplantat Deutschland ca. 3.000 €, Lettland ca. 1.200 €.</p>
             <a href="treatment-dental.html" class="btn btn-primary" data-i18n="treatments.viewDental">Zahnbehandlungen ansehen</a>
           </div>
         </article>
 
         <article class="treatment-category-card">
           <div class="content-image">
-            <img src="images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(3).jpg" alt="Orthopädische Untersuchung" width="800" height="500" />
+            <img src="images/orthopedics.jpg" alt="Orthopädische Untersuchung" width="800" height="500" />
           </div>
           <div class="treatment-category-body">
             <h3 class="treatment-category-title">Orthopädie</h3>
             <p class="treatment-category-desc">Gelenkersatz, Arthroskopie und konservative Orthopädie in zertifizierten Kliniken. Kurze Wartezeiten und transparente Kosten. Typische Ersparnis: ca. 50–60 %.</p>
             <p class="treatment-category-procedures"><strong>Häufige Behandlungen (Platzhalter):</strong> Hüft- und Knie-TEP, Arthroskopie, Bandscheiben-OP, Schulter-OP.</p>
-            <p class="treatment-category-savings"><strong>Beispiel Ersparnis (Platzhalter):</strong> Hüft-OP Deutschland ca. 20.000 €, Baltikum ca. 9.000 €.</p>
+            <p class="treatment-category-savings"><strong>Beispiel Ersparnis (Platzhalter):</strong> Hüft-OP Deutschland ca. 20.000 €, Lettland ca. 9.000 €.</p>
             <a href="treatment-orthopedic.html" class="btn btn-primary" data-i18n="treatments.viewOrtho">Orthopädie ansehen</a>
           </div>
         </article>
 
         <article class="treatment-category-card">
           <div class="content-image">
-            <img src="images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(4).jpg" alt="Medizinische Beratung" width="800" height="500" />
+            <img src="images/ivf.jpg" alt="Medizinische Beratung" width="800" height="500" />
           </div>
           <div class="treatment-category-body">
             <h3 class="treatment-category-title">Fruchtbarkeit</h3>
             <p class="treatment-category-desc">Reproduktionsmedizin und Kinderwunschbehandlung in spezialisierten Zentren. Diskret und professionell. Typische Ersparnis gegenüber Deutschland: ca. 30–50 %.</p>
             <p class="treatment-category-procedures"><strong>Häufige Behandlungen (Platzhalter):</strong> IVF, ICSI, Eizellenspende, Kryokonservierung, Beratung.</p>
-            <p class="treatment-category-savings"><strong>Beispiel Ersparnis (Platzhalter):</strong> IVF-Zyklus Deutschland ca. 4.000–6.000 €, Baltikum ca. 2.500–3.500 €.</p>
+            <p class="treatment-category-savings"><strong>Beispiel Ersparnis (Platzhalter):</strong> IVF-Zyklus Deutschland ca. 4.000–6.000 €, Lettland ca. 2.500–3.500 €.</p>
             <a href="treatment-fertility.html" class="btn btn-primary" data-i18n="treatments.viewFertility">Fruchtbarkeit ansehen</a>
           </div>
         </article>
 
         <article class="treatment-category-card">
           <div class="content-image">
-            <img src="images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(5).jpg" alt="Ästhetische Medizin" width="800" height="500" />
+            <img src="images/riga.jpg" alt="Ästhetische Medizin" width="800" height="500" />
           </div>
           <div class="treatment-category-body">
             <h3 class="treatment-category-title">Plastische Chirurgie</h3>
             <p class="treatment-category-desc">Ästhetische und rekonstruktive Eingriffe in zertifizierten Kliniken. Transparente Aufklärung und Nachsorge. Typische Ersparnis: ca. 40–50 %.</p>
             <p class="treatment-category-procedures"><strong>Häufige Behandlungen (Platzhalter):</strong> Brust-OP, Fettabsaugung, Facelift, Nasenkorrektur, Lidstraffung.</p>
-            <p class="treatment-category-savings"><strong>Beispiel Ersparnis (Platzhalter):</strong> Brustvergrößerung Deutschland ca. 6.000 €, Baltikum ca. 3.200 €.</p>
+            <p class="treatment-category-savings"><strong>Beispiel Ersparnis (Platzhalter):</strong> Brustvergrößerung Deutschland ca. 6.000 €, Lettland ca. 3.200 €.</p>
             <a href="treatment-plastic.html" class="btn btn-primary" data-i18n="treatments.viewPlastic">Plastische Chirurgie ansehen</a>
           </div>
         </article>
@@ -109,6 +129,7 @@
 
   <footer class="site-footer">
     <p class="footer-text">Baltic Health Travel</p>
+    <a href="contact.html" class="footer-contact-btn" data-i18n="nav.contact">Kontakt</a>
     <nav class="footer-nav" aria-label="Legal">
       <a href="legal/impressum.html" data-i18n="footer.imprint">Impressum</a>
       <a href="legal/privacy.html" data-i18n="footer.privacy">Datenschutz</a>
@@ -118,6 +139,5 @@
   </footer>
   <script src="i18n.js"></script>
   <script src="script.js"></script>
-  <script>document.querySelectorAll('.lang-switcher [data-lang]').forEach(function(b){ b.addEventListener('click',function(){ var l=this.getAttribute('data-lang'); if(window.BHT&&window.BHT.i18n) window.BHT.i18n.setLang(l); }); });</script>
 </body>
 </html>

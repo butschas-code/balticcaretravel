@@ -249,24 +249,261 @@
     updateDots();
   }
 
-  // --- Consultation form ---
+  // --- Consultation form (contact.html) ---
   var form = document.getElementById('consultation-form');
   if (form) {
+    var MAX_FILE_BYTES = 15 * 1024 * 1024;
+    var LIMITS = { firstName: 60, lastName: 60, email: 254, phone: 30, message: 2000 };
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function tr(key, deFallback) {
+      if (window.BHT && window.BHT.i18n) {
+        var v = window.BHT.i18n.get(key, window.BHT.i18n.getLang());
+        if (v) return v;
+      }
+      return deFallback;
+    }
+
+    function showError(field, msg) {
+      var wrap =
+        field.closest('.form-row-split__item') ||
+        field.closest('.form-row') ||
+        field.parentNode;
+      var existing = wrap.querySelector('.form-error');
+      if (existing) existing.remove();
+      field.setAttribute('aria-invalid', 'true');
+      var err = document.createElement('p');
+      err.className = 'form-error';
+      err.setAttribute('role', 'alert');
+      err.textContent = msg;
+      wrap.appendChild(err);
+    }
+
+    function clearError(field) {
+      var wrap =
+        field.closest('.form-row-split__item') ||
+        field.closest('.form-row') ||
+        field.parentNode;
+      var existing = wrap.querySelector('.form-error');
+      if (existing) existing.remove();
+      field.removeAttribute('aria-invalid');
+    }
+
+    function validateForm() {
+      var valid = true;
+      var firstEl = form.querySelector('[name="firstName"]');
+      var lastEl = form.querySelector('[name="lastName"]');
+      var emailEl = form.querySelector('[name="email"]');
+      var phoneEl = form.querySelector('[name="phone"]');
+      var treatmentEl = form.querySelector('[name="treatment"]');
+      var msgEl = form.querySelector('[name="message"]');
+      var privacyEl = form.querySelector('[name="privacy"]');
+      var fileEl = form.querySelector('[name="attachment"]');
+
+      if (firstEl) {
+        if (!firstEl.value.trim()) {
+          showError(firstEl, tr('contact.formErrFirstName', 'Bitte geben Sie Ihren Vornamen ein.'));
+          valid = false;
+        } else if (firstEl.value.length > LIMITS.firstName) {
+          showError(firstEl, tr('contact.formErrFirstName', 'Bitte geben Sie Ihren Vornamen ein.'));
+          valid = false;
+        } else clearError(firstEl);
+      }
+
+      if (lastEl) {
+        if (!lastEl.value.trim()) {
+          showError(lastEl, tr('contact.formErrLastName', 'Bitte geben Sie Ihren Nachnamen ein.'));
+          valid = false;
+        } else if (lastEl.value.length > LIMITS.lastName) {
+          showError(lastEl, tr('contact.formErrLastName', 'Bitte geben Sie Ihren Nachnamen ein.'));
+          valid = false;
+        } else clearError(lastEl);
+      }
+
+      if (emailEl) {
+        if (!emailEl.value.trim()) {
+          showError(emailEl, tr('contact.formErrEmail', 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'));
+          valid = false;
+        } else if (!EMAIL_RE.test(emailEl.value.trim())) {
+          showError(emailEl, tr('contact.formErrEmail', 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'));
+          valid = false;
+        } else if (emailEl.value.length > LIMITS.email) {
+          showError(emailEl, tr('contact.formErrEmail', 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'));
+          valid = false;
+        } else clearError(emailEl);
+      }
+
+      if (phoneEl) {
+        if (phoneEl.value.trim()) {
+          var phoneClean = phoneEl.value.replace(/[\s\-().+]/g, '');
+          if (!/^\d{5,20}$/.test(phoneClean) || phoneEl.value.length > LIMITS.phone) {
+            showError(phoneEl, tr('contact.formErrPhone', 'Bitte geben Sie eine gültige Telefonnummer ein.'));
+            valid = false;
+          } else clearError(phoneEl);
+        } else clearError(phoneEl);
+      }
+
+      if (treatmentEl) {
+        if (!treatmentEl.value.trim()) {
+          showError(treatmentEl, tr('contact.formErrTreatment', 'Bitte wählen Sie einen Behandlungsbereich.'));
+          valid = false;
+        } else clearError(treatmentEl);
+      }
+
+      if (msgEl) {
+        if (!msgEl.value.trim()) {
+          showError(msgEl, tr('contact.formErrMessage', 'Bitte beschreiben Sie kurz Ihr Anliegen.'));
+          valid = false;
+        } else if (msgEl.value.length > LIMITS.message) {
+          showError(msgEl, tr('contact.formErrMessage', 'Bitte beschreiben Sie kurz Ihr Anliegen.'));
+          valid = false;
+        } else clearError(msgEl);
+      }
+
+      if (privacyEl) {
+        if (!privacyEl.checked) {
+          showError(privacyEl, tr('contact.formErrPrivacy', 'Bitte bestätigen Sie die Datenschutzhinweise.'));
+          valid = false;
+        } else clearError(privacyEl);
+      }
+
+      if (fileEl && fileEl.files && fileEl.files[0]) {
+        if (fileEl.files[0].size > MAX_FILE_BYTES) {
+          showError(fileEl, tr('contact.formErrFileSize', 'Die Datei ist zu groß (max. 15 MB).'));
+          valid = false;
+        } else clearError(fileEl);
+      } else if (fileEl) {
+        clearError(fileEl);
+      }
+
+      return valid;
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var name = form.querySelector('[name="name"]');
-      var email = form.querySelector('[name="email"]');
-      if (name && name.value.trim() && email && email.value.trim()) {
-        var actions = form.querySelector('.form-actions');
-        var msg = document.createElement('p');
-        msg.className = 'form-success';
-        msg.setAttribute('role', 'status');
-        msg.textContent = (window.BHT && window.BHT.i18n ? window.BHT.i18n.get('index.formSuccess', window.BHT.i18n.getLang()) : 'Vielen Dank. Ihre Anfrage wurde gesendet. Wir melden uns in Kürze bei Ihnen.');
-        if (actions && actions.parentNode) {
-          actions.parentNode.insertBefore(msg, actions);
-        }
-        form.reset();
+      if (!validateForm()) return;
+
+      var actions = form.querySelector('.form-actions');
+      var prev = form.querySelector('.form-success');
+      if (prev) prev.remove();
+
+      var msg = document.createElement('p');
+      msg.className = 'form-success';
+      msg.setAttribute('role', 'status');
+      msg.textContent = tr('contact.formSuccess', 'Vielen Dank. Ihre Anfrage wurde gesendet. Wir melden uns in Kürze bei Ihnen.');
+      if (actions && actions.parentNode) {
+        actions.parentNode.insertBefore(msg, actions);
       }
+      form.reset();
+    });
+
+    form.querySelectorAll('.form-input, .form-textarea, .form-select, .form-checkbox, .form-file-input').forEach(function (field) {
+      var ev = field.type === 'checkbox' || field.type === 'file' ? 'change' : 'input';
+      field.addEventListener(ev, function () { clearError(field); });
     });
   }
+
+  // --- Language switcher (shared across all pages) ---
+  document.querySelectorAll('.lang-switcher [data-lang]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var lang = this.getAttribute('data-lang');
+      if (window.BHT && window.BHT.i18n) window.BHT.i18n.setLang(lang);
+    });
+  });
+
+  // --- Animated stat counters (index.html stats-bar) ---
+  (function () {
+    var statsBar = document.querySelector('.stats-bar');
+    if (!statsBar) return;
+    var counters = statsBar.querySelectorAll('.stat-number[data-count]');
+    var started = false;
+
+    function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+    function animateCounters() {
+      if (started) return;
+      started = true;
+      counters.forEach(function (el) {
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var isDecimal = el.getAttribute('data-decimal') === 'true';
+        var duration = 1800;
+        var startTime = performance.now();
+        function step(now) {
+          var elapsed = now - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          var value = Math.round(easeOutQuart(progress) * target);
+          el.textContent = isDecimal
+            ? (value / 10).toFixed(1).replace('.', ',')
+            : value;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) animateCounters(); });
+    }, { threshold: 0.3 });
+    obs.observe(statsBar);
+  }());
+
+  // --- Nav dropdown (keyboard + touch support) ---
+  (function () {
+    var items = document.querySelectorAll('.nav-dropdown-item');
+    items.forEach(function (item) {
+      var trigger = item.querySelector('.nav-dropdown-trigger');
+      if (!trigger) return;
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = item.classList.contains('is-open');
+        items.forEach(function (o) {
+          o.classList.remove('is-open');
+          var t = o.querySelector('.nav-dropdown-trigger');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+    document.addEventListener('click', function (ev) {
+      if (ev.target.closest && ev.target.closest('.nav-dropdown a')) return;
+      items.forEach(function (o) {
+        o.classList.remove('is-open');
+        var t = o.querySelector('.nav-dropdown-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }());
+
+  // --- Clinics treatment filter (clinics.html) ---
+  (function () {
+    var filter = document.getElementById('filter-treatment');
+    var links = document.querySelectorAll('.clinic-card-link');
+    if (!filter || !links.length) return;
+    filter.addEventListener('change', function () {
+      var value = this.value.trim();
+      links.forEach(function (link) {
+        var treatments = (link.getAttribute('data-treatment') || '').split(/\s+/);
+        var show = !value || treatments.indexOf(value) !== -1;
+        link.style.display = show ? '' : 'none';
+      });
+    });
+  }());
+
+  // --- FAQ page: at most one item open per accordion (clearer on long pages) ---
+  (function () {
+    document.querySelectorAll('.faq-page-accordion').forEach(function (accordion) {
+      accordion.addEventListener('toggle', function (e) {
+        var el = e.target;
+        if (!el.matches || !el.matches('details.faq-acc-item')) return;
+        if (el.open) {
+          accordion.querySelectorAll('details.faq-acc-item').forEach(function (d) {
+            if (d !== el) d.open = false;
+          });
+        }
+      });
+    });
+  }());
 })();

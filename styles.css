@@ -4,7 +4,8 @@
 
 :root {
   /* Typography scale — strong hierarchy */
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
   --text-hero: clamp(3rem, 8vw, 5.5rem);
   --text-display: clamp(2.25rem, 4vw, 3.5rem);
   --text-h2: clamp(1.75rem, 3vw, 2.5rem);
@@ -41,14 +42,16 @@
   --duration-normal: 0.4s;
   --duration-slow: 0.6s;
 
-  /* Colors */
-  --color-bg: #fbfbfb;
+  /* Colors — Apple-inspired */
+  --color-bg: #ffffff;
   --color-bg-alt: #f5f5f7;
+  --color-bg-dark: #1d1d1f;
   --color-text: #1d1d1f;
   --color-text-secondary: #6e6e73;
-  --color-accent: #0071e3;
-  --color-accent-hover: #0077ed;
-  --color-border: rgba(0, 0, 0, 0.08);
+  --color-accent: #52bcfb;
+  --color-accent-hover: #3aadee;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-navy: #002146;
 }
 
 *,
@@ -139,16 +142,24 @@ body {
 }
 
 .nav-logo {
-  font-size: var(--text-body);
-  font-weight: 600;
-  letter-spacing: var(--letter-tight);
-  color: var(--color-text);
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  flex-shrink: 0;
   transition: opacity var(--duration-fast) var(--ease-out-expo);
 }
 
 .nav-logo:hover {
-  opacity: 0.75;
+  opacity: 0.85;
+}
+
+.nav-logo-img {
+  display: block;
+  height: 60px;
+  width: auto;
+  /* Prevent layout shift */
+  max-width: 180px;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -156,12 +167,182 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: var(--space-lg);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Same box model for every top-level item (plain links vs dropdown button) */
+.nav-links > li {
+  display: flex;
+  align-items: center;
+  line-height: 1.25;
+}
+
+/* Nav dropdown */
+.nav-dropdown-item {
+  position: relative;
+}
+
+/* Bridge gap between trigger and menu so hover isn’t lost (dropdown stays clickable) */
+.nav-dropdown-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 0.85rem;
+  z-index: 150;
+}
+
+.nav-dropdown-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  opacity: 0.9;
+  transition: color var(--duration-fast) var(--ease-out-expo);
+}
+
+.nav-dropdown-trigger:hover,
+.nav-dropdown-item:hover .nav-dropdown-trigger,
+.nav-dropdown-item.is-open .nav-dropdown-trigger {
+  color: var(--color-accent);
+  opacity: 1;
+}
+
+.nav-dropdown-chevron {
+  width: 10px;
+  height: 7px;
+  transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.nav-dropdown-item:hover .nav-dropdown-chevron,
+.nav-dropdown-item.is-open .nav-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 230px;
+  background: rgba(250, 251, 253, 0.98);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border: 1px solid rgba(0, 33, 70, 0.09);
+  border-radius: 14px;
+  padding: 0.5rem;
+  list-style: none;
+  margin: 0;
+  box-shadow: 0 16px 48px rgba(0, 33, 70, 0.13), 0 2px 8px rgba(0, 33, 70, 0.05);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s var(--ease-out-expo),
+              transform 0.18s var(--ease-out-expo);
+  z-index: 200;
+}
+
+.nav-dropdown-item:hover .nav-dropdown,
+.nav-dropdown-item.is-open .nav-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown li { list-style: none; }
+
+.nav-dropdown a {
+  display: block;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background var(--duration-fast), color var(--duration-fast);
+  opacity: 1;
+}
+
+.nav-dropdown a:hover {
+  background: rgba(82, 188, 251, 0.1);
+  color: var(--color-navy);
+}
+
+/* Nav CTAs — primary contact + secondary login */
+.nav-ctas {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Nav CTA pill button */
+.nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #52bcfb 0%, #3aadee 100%);
+  color: #002146;
+  border-radius: 100px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+  box-shadow: 0 2px 12px rgba(82, 188, 251, 0.3);
+  flex-shrink: 0;
+}
+
+.nav-cta-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  box-shadow: 0 4px 20px rgba(82, 188, 251, 0.42);
+  opacity: 1;
+  color: #002146;
+}
+
+.nav-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-navy, #002146);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 100px;
+  border: 1px solid rgba(0, 33, 70, 0.18);
+  background: rgba(255, 255, 255, 0.55);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.nav-cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(0, 33, 70, 0.28);
+  color: var(--color-navy, #002146);
+  transform: translateY(-1px);
+  opacity: 1;
 }
 
 .nav-links a {
+  display: inline-flex;
+  align-items: center;
   font-size: var(--text-small);
   font-weight: 500;
+  line-height: 1.25;
   color: var(--color-text);
   text-decoration: none;
   opacity: 0.9;
@@ -267,12 +448,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-md) var(--space-lg);
-  margin: var(--space-sm) 0;
+  gap: 0.35rem 1rem;
+  margin: 0;
 }
 
 .footer-nav a {
-  font-size: var(--text-small);
+  font-size: 0.8125rem;
   color: var(--color-text-secondary);
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-out-expo);
@@ -298,7 +479,7 @@ body {
   line-height: var(--line-relaxed);
   color: var(--color-text-secondary);
   margin: 0 auto var(--space-xl);
-  max-width: 36ch;
+  max-width: 14ch;
   text-align: center;
   animation: heroFadeIn 1s var(--ease-out-expo) 0.15s both;
 }
@@ -1124,6 +1305,11 @@ body {
   text-decoration: none;
   color: inherit;
   display: block;
+}
+
+/* Hash links from other pages (e.g. treatment-fertility) scroll under fixed header without this */
+.clinic-card-link[id] {
+  scroll-margin-top: 5.5rem;
 }
 
 .clinic-card-link .clinic-card {
@@ -2056,22 +2242,47 @@ body {
    ========================================================================== */
 
 .site-footer {
-  padding: var(--space-2xl) var(--space-xl);
+  padding: var(--space-md) var(--space-lg);
   text-align: center;
   border-top: 1px solid var(--color-border);
-  background: var(--color-bg);
+  background: #fff;
 }
 
 .footer-text {
-  font-size: var(--text-small);
+  font-size: 0.8125rem;
   font-weight: 600;
   margin: 0 0 var(--space-xs);
+  color: var(--color-text);
+}
+
+.footer-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 var(--space-sm);
+  padding: 0.4rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  text-decoration: none;
+  color: #fff;
+  background: var(--color-accent);
+  border-radius: 980px;
+  border: none;
+  transition: background var(--duration-fast) var(--ease-out-expo),
+              transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.footer-contact-btn:hover {
+  background: var(--color-accent-hover);
+  color: #fff;
+  transform: translateY(-1px);
 }
 
 .footer-legal {
-  font-size: var(--text-small);
+  font-size: 0.75rem;
   color: var(--color-text-secondary);
-  margin: 0;
+  margin: var(--space-xs) 0 0;
 }
 
 /* ==========================================================================
@@ -2214,5 +2425,65 @@ body {
 
   .comparison-table {
     min-width: 0;
+  }
+}
+
+/* ==========================================================================
+   Mobile nav — collapse links below 900px, single-row header
+   ========================================================================== */
+
+.nav-logo {
+  white-space: nowrap;
+}
+
+/* Mobile nav CTA button (visible only on mobile) */
+.nav-mobile-cta {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    padding: 0.875rem 1.25rem;
+  }
+
+  .nav {
+    gap: 0.75rem;
+  }
+
+  /* Hide all nav links on mobile */
+  .nav-links {
+    display: none;
+  }
+
+  /* Show a compact CTA instead */
+  .nav-mobile-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent, #0071e3);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .nav-ctas {
+    gap: 0.35rem;
+  }
+
+  .nav-cta-btn {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.8125rem;
+  }
+
+  .nav-cta-secondary {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.8125rem;
   }
 }

@@ -3,27 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Partnerklinik — Baltic Health Travel. Zertifizierte Kliniken in Riga, Vilnius, Tallinn." />
-  <title>Partnerklinik | Baltic Health Travel</title>
+  <meta name="description" content="Partnerklinik — Baltic Care Travel. Team, Leistungen und Einblicke." />
+  <title>Partnerklinik | Baltic Care Travel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="home.css" />
 </head>
-<body>
+<body class="page-clinic-detail">
+
   <header class="site-header">
     <nav class="nav">
-      <a href="index.html" class="nav-logo">Baltic Health Travel</a>
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.png" alt="Baltic Care Travel" height="48" class="nav-logo-img" />
+      </a>
+
       <ul class="nav-links">
-        <li><a href="index.html" data-i18n="nav.home">Startseite</a></li>
-        <li><a href="treatments.html" data-i18n="nav.treatments">Behandlungen</a></li>
+        <li><a href="how-it-works.html" data-i18n="nav.howItWorks">So funktioniert es</a></li>
+        <li class="nav-dropdown-item">
+          <button type="button" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            <span data-i18n="nav.treatments">Behandlungen</span>
+            <svg class="nav-dropdown-chevron" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+              <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <ul class="nav-dropdown" role="menu">
+            <li role="none"><a href="treatment-dental.html" data-i18n="nav.dental" role="menuitem">Zahnbehandlung</a></li>
+            <li role="none"><a href="treatment-fertility.html" data-i18n="nav.fertility" role="menuitem">Kinderwunsch / IVF</a></li>
+            <li role="none"><a href="treatment-orthopedic.html" data-i18n="nav.ortho" role="menuitem">Orthopädie</a></li>
+          </ul>
+        </li>
         <li><a href="clinics.html" data-i18n="nav.clinics">Kliniken</a></li>
-        <li><a href="how-it-works.html" data-i18n="nav.process">Ablauf</a></li>
         <li><a href="prices.html" data-i18n="nav.prices">Preise</a></li>
-        <li><a href="patient-stories.html" data-i18n="nav.stories">Erfahrungen</a></li>
+        <li><a href="about.html" data-i18n="nav.about">Über uns</a></li>
         <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
-        <li><a href="contact.html" data-i18n="nav.contact">Kontakt</a></li>
       </ul>
+
+      <div class="nav-ctas">
+        <a href="login.html" class="nav-cta-secondary" data-i18n="nav.login">Anmelden</a>
+        <a href="contact.html" class="nav-cta-btn" data-i18n="nav.contact">Kontakt</a>
+      </div>
+      <a href="contact.html" class="nav-mobile-cta" data-i18n="nav.cta">Erstgespräch</a>
+
       <div class="lang-switcher" role="group" aria-label="Language">
         <button type="button" class="lang-switcher-btn" data-lang="de" aria-current="true">DE</button>
         <span class="lang-switcher-sep" aria-hidden="true"></span>
@@ -33,138 +55,199 @@
   </header>
 
   <main id="clinic-main">
-    <section class="page-hero">
-      <div class="page-hero-bg" id="clinic-hero-bg" aria-hidden="true"></div>
-      <div class="page-hero-inner">
-        <h1 class="page-hero-title" id="clinic-title">Partnerklinik</h1>
-        <p class="page-hero-lead" id="clinic-lead">Laden …</p>
+
+    <section class="hero hero-home hero-with-bg clinic-detail-hero" aria-labelledby="clinic-title">
+      <div class="hero-bg hero-bg-home" id="clinic-hero-bg" style="background-image: url('images/riga.jpg');" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="hero-inner hero-inner-home">
+        <nav class="clinic-back-nav" aria-label="Breadcrumb">
+          <a href="clinics.html" class="clinic-back-link"><span class="clinic-back-link__arrow" aria-hidden="true">←</span> <span data-i18n="nav.clinics">Kliniken</span></a>
+        </nav>
+        <h1 id="clinic-title" class="hero-title hero-title-home">Partnerklinik</h1>
+        <p class="hero-subtitle" id="clinic-lead">Laden …</p>
+        <div class="hero-actions hero-actions-home">
+          <a href="contact.html" class="btn-hero-primary" data-i18n="home.heroCta1">Kostenfreies Erstgespräch</a>
+          <a href="#clinic-overview" class="btn-hero-ghost" data-i18n="clinic.overview">Kliniküberblick</a>
+        </div>
+      </div>
+
+      <a href="#clinic-overview" class="hero-scroll-hint" aria-label="Weiterlesen">
+        <span class="hero-scroll-arrow" aria-hidden="true">↓</span>
+      </a>
+    </section>
+
+    <section class="section section-clinic-editorial" id="clinic-overview" data-animate aria-labelledby="clinic-overview-heading">
+      <h2 id="clinic-trust-heading" class="visually-hidden" data-i18n="clinic.trustHeading">Vertrauen &amp; Betreuung</h2>
+      <div class="clinic-editorial-inner">
+        <header class="clinic-editorial-head">
+          <span class="section-eyebrow" data-i18n="clinic.welcomeEyebrow">Ihre Partnerklinik</span>
+          <h2 id="clinic-overview-heading" class="clinic-editorial-title" data-i18n="clinic.overview">Kliniküberblick</h2>
+          <p class="clinic-editorial-lead" id="clinic-overview-text">—</p>
+          <p class="clinic-editorial-body" id="clinic-overview-secondary"></p>
+        </header>
+
+        <div class="clinic-editorial-rule" aria-hidden="true"></div>
+
+        <div class="clinic-principles">
+          <p class="clinic-principles-kicker" data-i18n="clinic.trustEyebrow">Was Sie erwarten dürfen</p>
+          <p class="clinic-principles-intro" data-i18n="clinic.trustLead">Wir wählen Kliniken nicht nach dem günstigsten Preis, sondern nach fachlicher Qualität, klarer Kommunikation und einem Umfeld, in dem Sie sich gut aufgehoben fühlen.</p>
+          <ol class="clinic-principles-list">
+            <li class="clinic-principle">
+              <span class="clinic-principle__index" aria-hidden="true">01</span>
+              <div class="clinic-principle__copy">
+                <h3 class="clinic-principle__title" data-i18n="clinic.trust1Title">Menschlichkeit</h3>
+                <p class="clinic-principle__text" data-i18n="clinic.trust1Text">Zeit für Fragen, verständliche Erklärungen und ein Team, das mit Ihnen spricht — nicht über Sie.</p>
+              </div>
+            </li>
+            <li class="clinic-principle">
+              <span class="clinic-principle__index" aria-hidden="true">02</span>
+              <div class="clinic-principle__copy">
+                <h3 class="clinic-principle__title" data-i18n="clinic.trust2Title">Struktur &amp; Sicherheit</h3>
+                <p class="clinic-principle__text" data-i18n="clinic.trust2Text">Durchdachte Abläufe, nachvollziehbare Schritte und EU-nahe Standards geben Orientierung — besonders bei Behandlung im Ausland.</p>
+              </div>
+            </li>
+            <li class="clinic-principle">
+              <span class="clinic-principle__index" aria-hidden="true">03</span>
+              <div class="clinic-principle__copy">
+                <h3 class="clinic-principle__title" data-i18n="clinic.trust3Title">Begleitung auf Deutsch</h3>
+                <p class="clinic-principle__text" data-i18n="clinic.trust3Text">Wir bleiben Ihre Anlaufstelle: von der ersten Frage bis zur Koordination mit der Klinik — auf Deutsch und ohne Zeitdruck.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="clinic-editorial-rule" aria-hidden="true"></div>
+
+        <div class="clinic-journey-flow" aria-labelledby="clinic-journey-title">
+          <div class="clinic-journey-flow__main">
+            <span class="section-eyebrow" data-i18n="clinic.journeyEyebrow">Ihr Weg</span>
+            <h3 id="clinic-journey-title" class="clinic-journey-flow__title" data-i18n="clinic.journeyTitle">So begleiten wir Sie</h3>
+            <p class="clinic-journey-flow__text" data-i18n="clinic.journeyIntro">Ein Auslandsaufenthalt für eine Behandlung kann überwältigend wirken. Deshalb klären wir mit Ihnen den Ablauf frühzeitig: welche Unterlagen sinnvoll sind, welche Termine realistisch sind und wie Sie sich auf den Aufenthalt vorbereiten.</p>
+          </div>
+          <aside class="clinic-journey-flow__aside" aria-labelledby="clinic-journey-aside-label">
+            <p class="clinic-journey-flow__label" id="clinic-journey-aside-label" data-i18n="clinic.journeyClinicLabel">Besonderheit dieser Klinik</p>
+            <p class="clinic-journey-flow__aside-text" id="clinic-journey-text"></p>
+          </aside>
+        </div>
       </div>
     </section>
 
-    <section class="section" data-animate>
-      <h2 class="section-title" data-i18n="clinic.overview">Kliniküberblick</h2>
-      <p class="body-large" id="clinic-overview">—</p>
+    <section class="section section-treatments-cards section-clinic-treatments" id="clinic-treatments" data-animate aria-labelledby="clinic-treatments-title">
+      <div class="section-header-centered">
+        <span class="section-eyebrow" data-i18n="home.treatmentsEyebrow">Unsere Schwerpunkte</span>
+        <h2 id="clinic-treatments-title" class="section-title" data-i18n="home.treatmentsTitle">Drei Behandlungsbereiche. Ein koordinierter Weg.</h2>
+        <p class="treatment-clinic-context" id="clinic-treatments-context"></p>
+      </div>
+      <div class="treatments-cards-grid">
+
+        <a href="treatment-dental.html" class="treatment-card" data-clinic-treatment="dental">
+          <div class="treatment-card__image-zone">
+            <img src="images/dental.jpg" alt="Zahnbehandlung" class="treatment-card__image" width="800" height="600" loading="lazy" />
+          </div>
+          <div class="treatment-card__body">
+            <h3 class="treatment-card__title" data-i18n="home.dentalTitle">Zahnbehandlungen</h3>
+            <p class="treatment-card__desc" data-i18n="home.dentalDesc">Für Patientinnen und Patienten mit hohem Eigenanteil bei Implantaten, Zahnersatz, Veneers und größeren Sanierungen.</p>
+            <span class="treatment-card__link" data-i18n="home.learnMore">Mehr erfahren →</span>
+          </div>
+        </a>
+
+        <a href="treatment-fertility.html" class="treatment-card" data-clinic-treatment="fertility">
+          <div class="treatment-card__image-zone">
+            <img src="images/ivf.jpg" alt="Kinderwunsch / IVF" class="treatment-card__image" width="800" height="600" loading="lazy" />
+          </div>
+          <div class="treatment-card__body">
+            <h3 class="treatment-card__title" data-i18n="home.fertilityTitle">Kinderwunsch / IVF</h3>
+            <p class="treatment-card__desc" data-i18n="home.fertilityDesc">Für Patientinnen und Patienten, die strukturierte Begleitung, schnellere Wege, klare Kommunikation und Zugang zu passenden Optionen suchen.</p>
+            <span class="treatment-card__link" data-i18n="home.learnMore">Mehr erfahren →</span>
+          </div>
+        </a>
+
+        <a href="treatment-orthopedic.html" class="treatment-card" data-clinic-treatment="ortho">
+          <div class="treatment-card__image-zone">
+            <img src="images/orthopedics.jpg" alt="Orthopädie" class="treatment-card__image" width="800" height="600" loading="lazy" />
+          </div>
+          <div class="treatment-card__body">
+            <h3 class="treatment-card__title" data-i18n="home.orthoTitle">Orthopädie</h3>
+            <p class="treatment-card__desc" data-i18n="home.orthoDesc">Für geplante orthopädische Eingriffe mit Fokus auf ausgewählte Behandlungen und individuelle Koordination.</p>
+            <span class="treatment-card__link" data-i18n="home.learnMore">Mehr erfahren →</span>
+          </div>
+        </a>
+
+      </div>
     </section>
 
-    <section class="section section-alt" data-animate>
-      <h2 class="section-title" data-i18n="clinic.doctors">Ärzteteam</h2>
-      <p class="section-lead" data-i18n="clinic.doctorsLead">Erfahrene Fachärztinnen und Fachärzte mit anerkannter Qualifikation.</p>
-      <div class="doctor-grid" id="clinic-doctors"></div>
+    <section class="section section-clinic-detail section-clinic-team" data-animate aria-labelledby="clinic-doctors-heading">
+      <div class="clinic-detail-section-head">
+        <h2 id="clinic-doctors-heading" class="clinic-detail-section-head__title" data-i18n="clinic.doctors">Ärzteteam</h2>
+        <p class="clinic-detail-section-head__lead" data-i18n="clinic.doctorsLead">Erfahrene Fachärztinnen und Fachärzte mit anerkannter Qualifikation.</p>
+      </div>
+      <div class="clinic-showcase-grid" id="clinic-doctors"></div>
     </section>
 
-    <section class="section" data-animate>
-      <h2 class="section-title" data-i18n="clinic.equipment">Ausstattung &amp; Einrichtungen</h2>
-      <p class="body-large" id="clinic-equipment">—</p>
+    <section class="section section-clinic-facts" data-animate>
+      <div class="clinic-facts-inner">
+        <div class="clinic-facts-block">
+          <h2 class="clinic-facts-heading" data-i18n="clinic.equipment">Ausstattung &amp; Einrichtungen</h2>
+          <p class="clinic-facts-text" id="clinic-equipment">—</p>
+        </div>
+        <div class="clinic-facts-block">
+          <h2 class="clinic-facts-heading" data-i18n="clinic.certifications">Zertifizierungen</h2>
+          <p class="clinic-facts-sub" data-i18n="clinic.certsSub">Qualitätssiegel und regulatorische Grundlagen — transparent für Sie einsehbar.</p>
+          <ul class="clinic-cert-list" id="clinic-certs"></ul>
+        </div>
+      </div>
     </section>
 
-    <section class="section section-alt" data-animate>
-      <h2 class="section-title" data-i18n="clinic.certifications">Zertifizierungen</h2>
-      <ul class="cert-list" id="clinic-certs"></ul>
+    <section class="section section-clinic-quote" data-animate aria-labelledby="clinic-experience-heading">
+      <div class="clinic-quote-inner">
+        <h2 id="clinic-experience-heading" class="clinic-quote-label" data-i18n="clinic.experience">Patientenerfahrung</h2>
+        <blockquote class="clinic-quote-body" id="clinic-testimonial">—</blockquote>
+        <p class="clinic-quote-cite" data-i18n="clinic.experienceNote">Stimmen von Patientinnen und Patienten, die wir bei der Koordination begleitet haben.</p>
+      </div>
     </section>
 
-    <section class="section" data-animate>
-      <h2 class="section-title" data-i18n="clinic.experience">Patientenerfahrung</h2>
-      <p class="body-large" id="clinic-testimonial">—</p>
+    <section class="section section-cta-final" data-animate>
+      <div class="cta-final-inner">
+        <p class="cta-final-eyebrow" data-i18n="nav.contact">Kontakt</p>
+        <h2 class="cta-final-title" data-i18n="clinic.ctaTitle">Beratung anfragen</h2>
+        <p class="cta-final-subtitle" id="clinic-cta-lead">—</p>
+        <div class="cta-final-actions">
+          <a href="contact.html" class="btn-cta-primary" data-i18n="home.ctaCta1">Kostenfreies Erstgespräch</a>
+          <a href="clinics.html" class="btn-cta-ghost" data-i18n="nav.clinics">Alle Kliniken</a>
+        </div>
+      </div>
     </section>
 
-    <section class="section section-cta">
-      <h2 class="section-title" data-i18n="clinic.ctaTitle">Beratung anfragen</h2>
-      <p class="section-lead" id="clinic-cta-lead">—</p>
-      <a href="contact.html" class="btn btn-primary btn-large" data-i18n="hero.cta">Kostenlose Beratung anfragen</a>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <p class="footer-text">Baltic Health Travel</p>
-    <nav class="footer-nav" aria-label="Legal">
-      <a href="legal/impressum.html" data-i18n="footer.imprint">Impressum</a>
-      <a href="legal/privacy.html" data-i18n="footer.privacy">Datenschutz</a>
-      <a href="legal/terms.html" data-i18n="footer.terms">AGB</a>
-    </nav>
-    <p class="footer-legal" data-i18n="footer.copyright">© 2025 Baltic Health Travel. Alle Rechte vorbehalten.</p>
+  <footer class="site-footer site-footer-home">
+    <div class="footer-home-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <img src="images/logo.png" alt="Baltic Care Travel" height="36" class="nav-logo-img" />
+        </a>
+        <p class="footer-tagline" data-i18n="home.footerTagline">Behandlungskoordination · Lettland</p>
+      </div>
+      <a href="contact.html" class="footer-contact-btn" data-i18n="nav.contact">Kontakt</a>
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <a href="how-it-works.html" data-i18n="nav.howItWorks">So funktioniert es</a>
+        <a href="treatments.html" data-i18n="nav.treatments">Behandlungen</a>
+        <a href="clinics.html" data-i18n="nav.clinics">Kliniken</a>
+        <a href="prices.html" data-i18n="nav.prices">Preise</a>
+        <a href="about.html" data-i18n="nav.about">Über uns</a>
+        <a href="faq.html" data-i18n="nav.faq">FAQ</a>
+        <a href="contact.html" data-i18n="nav.contact">Kontakt</a>
+        <a href="legal/impressum.html" data-i18n="nav.impressum">Impressum</a>
+        <a href="legal/privacy.html" data-i18n="nav.privacy">Datenschutz</a>
+        <a href="legal/terms.html" data-i18n="nav.terms">AGB</a>
+      </nav>
+      <p class="footer-legal" data-i18n="home.footerLegal">© 2025 Baltic Health Travel. Alle Rechte vorbehalten.</p>
+    </div>
   </footer>
 
   <script src="i18n.js"></script>
   <script src="script.js"></script>
-  <script>
-    (function() {
-      var data = {
-        riga: {
-          title: 'Baltic Medical Center Riga',
-          lead: 'Zahnmedizin & Implantologie · Riga, Lettland',
-          heroBg: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(6).jpg',
-          overview: 'Das Baltic Medical Center Riga ist eine zertifizierte Klinik mit Schwerpunkt Zahnmedizin und Implantologie. Moderne Ausstattung, erfahrene Fachärzte und deutschsprachige Betreuung.',
-          equipment: 'Moderne Behandlungsräume, digitales Röntgen, OP-Bereich für implantologische Eingriffe. Sterilisationsstandards nach EU-Richtlinien.',
-          certs: ['ISO 9001 (Qualitätsmanagement)', 'EU-Medizinprodukte-Verordnung (MDR)', 'Lettische Zahnärztekammer', 'Deutschsprachige Patientenbetreuung'],
-          testimonial: 'Von der Anreise bis zur Nachsorge: Wir koordinieren Termine, Übersetzung und Rückfragen. Die Klinik bietet Abholservice und deutschsprachige Ansprechpartner.',
-          ctaLead: 'Wir vermitteln Sie unverbindlich an das Baltic Medical Center Riga.',
-          doctors: [
-            { name: 'Dr. med. dent. [Name]', spec: 'Zahnmedizin, Implantologie', exp: '14 Jahre', treatments: 'über 3.200 Implantate', cert: 'DGZI, EAO', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(9).jpg' },
-            { name: 'Dr. med. dent. [Name]', spec: 'Zahnmedizin, Ästhetik & Prothetik', exp: '11 Jahre', treatments: 'über 2.100 Kronen & Veneers', cert: 'DGPro, ESCD', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(10).jpg' }
-          ]
-        },
-        vilnius: {
-          title: 'Vilnius Advanced Clinic',
-          lead: 'Zahnmedizin, Ästhetik & Fruchtbarkeit · Vilnius, Litauen',
-          heroBg: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(7).jpg',
-          overview: 'Die Vilnius Advanced Clinic vereint Zahnmedizin, ästhetische Behandlungen und Reproduktionsmedizin. Moderne Ausstattung und deutschsprachige Betreuung.',
-          equipment: 'Eigene Labore, moderner OP-Bereich, Kinderwunschzentrum mit Kryobank. EU-Standards.',
-          certs: ['ISO 9001', 'Litauische Gesundheitsbehörde', 'Deutschsprachige Patientenbetreuung'],
-          testimonial: 'Koordination von Anreise, Unterkunft und Terminen. Diskret und vertraulich.',
-          ctaLead: 'Wir vermitteln Sie unverbindlich an die Vilnius Advanced Clinic.',
-          doctors: [
-            { name: 'Dr. [Name]', spec: 'Zahnmedizin, Ästhetik', exp: '12 Jahre', treatments: '', cert: 'EU-anerkannt', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(9).jpg' },
-            { name: 'Dr. [Name]', spec: 'Reproduktionsmedizin', exp: '15 Jahre', treatments: '', cert: 'ESHRE', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(10).jpg' }
-          ]
-        },
-        tallinn: {
-          title: 'Tallinn Medical Institute',
-          lead: 'Orthopädie & Plastische Chirurgie · Tallinn, Estland',
-          heroBg: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(8).jpg',
-          overview: 'Das Tallinn Medical Institute ist auf Orthopädie und Plastische Chirurgie spezialisiert. Moderne OP-Säle, erfahrene Fachärzte und deutschsprachige Betreuung.',
-          equipment: 'Moderne OP-Säle für Orthopädie und Plastische Chirurgie, Intensiv- und Stationärbereich. EU-Standards.',
-          certs: ['ISO 9001', 'Estnische Gesundheitsaufsicht', 'Deutschsprachige Patientenbetreuung'],
-          testimonial: 'Abholservice, Koordination von Aufenthalt und Nachsorge. Transparente Kosten.',
-          ctaLead: 'Wir vermitteln Sie unverbindlich an das Tallinn Medical Institute.',
-          doctors: [
-            { name: 'Dr. [Name]', spec: 'Orthopädie, Gelenkchirurgie', exp: '18 Jahre', treatments: 'über 2.000 TEP', cert: '', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(10).jpg' },
-            { name: 'Dr. [Name]', spec: 'Plastische & Ästhetische Chirurgie', exp: '14 Jahre', treatments: '', cert: 'Fachgesellschaft', img: 'images/lucid-origin_style_premium_modern_healthcare_photography_soft_natural_lighting_minimalistic_c-0%20(11).jpg' }
-          ]
-        }
-      };
-
-      var id = (function() {
-        var m = /[?&]id=([^&]+)/.exec(window.location.search);
-        return (m && m[1]) ? m[1].toLowerCase() : 'riga';
-      })();
-      var clinic = data[id] || data.riga;
-
-      document.getElementById('clinic-title').textContent = clinic.title;
-      document.getElementById('clinic-lead').textContent = clinic.lead;
-      document.getElementById('clinic-hero-bg').style.backgroundImage = 'url(' + clinic.heroBg + ')';
-      document.getElementById('clinic-overview').textContent = clinic.overview;
-      document.getElementById('clinic-equipment').textContent = clinic.equipment;
-      document.getElementById('clinic-testimonial').textContent = clinic.testimonial;
-      document.getElementById('clinic-cta-lead').textContent = clinic.ctaLead;
-      document.title = clinic.title + ' | Baltic Health Travel';
-
-      var certList = document.getElementById('clinic-certs');
-      clinic.certs.forEach(function(c) {
-        var li = document.createElement('li');
-        li.className = 'cert-item';
-        li.textContent = c;
-        certList.appendChild(li);
-      });
-
-      var docGrid = document.getElementById('clinic-doctors');
-      clinic.doctors.forEach(function(d) {
-        var art = document.createElement('article');
-        art.className = 'doctor-card';
-        art.innerHTML = '<div class="doctor-card-image-wrap"><img src="' + d.img + '" alt="" class="doctor-card-image-img" width="400" height="300" /></div><div class="doctor-card-body"><h3 class="doctor-name">' + d.name + '</h3><p class="doctor-specialization">' + d.spec + '</p><ul class="doctor-meta"><li><strong>Erfahrung:</strong> ' + d.exp + '</li>' + (d.treatments ? '<li><strong>Behandlungen:</strong> ' + d.treatments + '</li>' : '') + (d.cert ? '<li><strong>Zertifizierungen:</strong> ' + d.cert + '</li>' : '') + '</ul></div>';
-        docGrid.appendChild(art);
-      });
-    })();
-  </script>
-  <script>document.querySelectorAll('.lang-switcher [data-lang]').forEach(function(b){ b.addEventListener('click',function(){ var l=this.getAttribute('data-lang'); if(window.BHT&&window.BHT.i18n) window.BHT.i18n.setLang(l); }); });</script>
+  <script src="clinic-page.js"></script>
 </body>
 </html>

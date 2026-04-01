@@ -61,34 +61,52 @@ function applySiteLang() {
 }
 
 async function loadPatientBundle(supabase, uid) {
-  var prof = supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', uid)
-    .maybeSingle();
-  var intake = supabase.from('patient_intake').select('*').eq('user_id', uid).maybeSingle();
-  var cases = supabase
+  var intake = await supabase.from('patient_intake').select('*').eq('user_id', uid).maybeSingle();
+  if (intake.error) throw intake.error;
+  var casesRes = await supabase
     .from('patient_cases')
-    .select('*, clinics(name)')
+    .select('*')
     .eq('user_id', uid)
     .order('assigned_at', { ascending: false });
-  var quest = supabase
+  if (casesRes.error) throw casesRes.error;
+  var quest = await supabase
     .from('questionnaire_responses')
     .select('*')
     .eq('user_id', uid)
     .eq('questionnaire_slug', Q_SLUG)
     .maybeSingle();
-  var files = supabase.from('case_files').select('*').eq('user_id', uid).order('created_at', { ascending: false });
+  if (quest.error) throw quest.error;
+  var files = await supabase.from('case_files').select('*').eq('user_id', uid).order('created_at', { ascending: false });
+  if (files.error) throw files.error;
 
-  var results = await Promise.all([prof, intake, cases, quest, files]);
-  for (var i = 0; i < results.length; i++) {
-    if (results[i].error) throw results[i].error;
+  var caseRows = casesRes.data || [];
+  var clinicIds = caseRows
+    .map(function (c) {
+      return c.clinic_id;
+    })
+    .filter(function (id, i, a) {
+      return id && a.indexOf(id) === i;
+    });
+  var clinicById = {};
+  if (clinicIds.length) {
+    var clin = await supabase.from('clinics').select('id,name').in('id', clinicIds);
+    if (!clin.error && clin.data) {
+      clin.data.forEach(function (row) {
+        clinicById[row.id] = row;
+      });
+    }
   }
-  state.profile = results[0].data;
-  state.intake = results[1].data;
-  state.cases = results[2].data || [];
-  state.questionnaire = results[3].data;
-  state.files = results[4].data || [];
+  caseRows = caseRows.map(function (c) {
+    var copy = Object.assign({}, c);
+    var cl = c.clinic_id ? clinicById[c.clinic_id] : null;
+    copy.clinics = cl ? { name: cl.name } : null;
+    return copy;
+  });
+
+  state.intake = intake.data;
+  state.cases = caseRows;
+  state.questionnaire = quest.data;
+  state.files = files.data || [];
 }
 
 async function loadClinicBundle(supabase, clinicId) {
@@ -136,25 +154,32 @@ async function refreshSession(sessionOverride) {
   var profileBound = false;
   try {
     var session = null;
-    if (sessionOverride && sessionOverride.access_token && sessionOverride.refresh_token) {
-      var setRes = await supabase.auth.setSession({
-        access_token: sessionOverride.access_token,
-        refresh_token: sessionOverride.refresh_token,
-      });
-      if (setRes.error) console.warn('Supabase setSession:', setRes.error);
-      session = setRes.data && setRes.data.session ? setRes.data.session : null;
-    }
-    var maxAttempts = sessionOverride ? 15 : 1;
+    // signInWithPassword / signUp already call _saveSession; calling setSession first can fail
+    // (_getUser flake, clock skew) and is unnecessary. Read session from storage, then recover once.
+    var maxAttempts = sessionOverride ? 24 : 1;
     for (var attempt = 0; attempt < maxAttempts; attempt++) {
-      if (!session) {
-        var sessRes = await supabase.auth.getSession();
-        session = sessRes.data.session;
-      }
-      if (session) break;
+      var sessRes = await supabase.auth.getSession();
+      session = sessRes.data.session;
+      if (session && session.user) break;
       if (attempt < maxAttempts - 1) {
         await new Promise(function (r) {
           setTimeout(r, 50);
         });
+      }
+    }
+    if (
+      (!session || !session.user) &&
+      sessionOverride &&
+      sessionOverride.access_token &&
+      sessionOverride.refresh_token
+    ) {
+      var setRes = await supabase.auth.setSession({
+        access_token: sessionOverride.access_token,
+        refresh_token: sessionOverride.refresh_token,
+      });
+      if (setRes.error) console.warn('Supabase setSession (fallback):', setRes.error);
+      if (!setRes.error && setRes.data && setRes.data.session) {
+        session = setRes.data.session;
       }
     }
     state.user = session && session.user ? session.user : null;
@@ -190,7 +215,18 @@ async function refreshSession(sessionOverride) {
           state.messageOk = false;
         }
       } else {
-        await loadPatientBundle(supabase, state.user.id);
+        try {
+          await loadPatientBundle(supabase, state.user.id);
+        } catch (bundleErr) {
+          console.error('loadPatientBundle', bundleErr);
+          state.intake = null;
+          state.cases = [];
+          state.questionnaire = null;
+          state.files = [];
+          state.message =
+            bundleErr && bundleErr.message ? String(bundleErr.message) : t('errorGeneric');
+          state.messageOk = false;
+        }
         var saved = readPersistedStep();
         if (!state.intake) {
           state.step = 2;

@@ -980,10 +980,16 @@ function bindMainHandlers() {
 
         var res = await supabase.from('patient_intake').upsert(row, { onConflict: 'user_id' });
         if (res.error) throw res.error;
+        state.intake = row;
+        if (state.profile) {
+          state.profile.phone = row.phone;
+          state.profile.country = row.country;
+          state.profile.preferred_language = row.preferred_language;
+        }
         state.message = '';
         state.step = 3;
         persistStep(3);
-        await refreshSession();
+        renderShell();
       } catch (e) {
         console.error(e);
         state.message = e.message || t('errorGeneric');
@@ -1030,10 +1036,17 @@ function bindMainHandlers() {
           size_bytes: file.size,
         });
         if (ins.error) throw ins.error;
+        state.files.unshift({
+          file_name: file.name,
+          mime_type: file.type || null,
+          size_bytes: file.size,
+          storage_path: path,
+          created_at: new Date().toISOString(),
+        });
         fileInput.value = '';
         state.message = '';
         state.messageOk = true;
-        await refreshSession();
+        renderShell();
       } catch (e) {
         console.error(e);
         state.message = e.message || t('errorGeneric');
@@ -1072,9 +1085,15 @@ function bindMainHandlers() {
           { onConflict: 'user_id,questionnaire_slug' }
         );
         if (res.error) throw res.error;
-        state.message = '';
+        state.questionnaire = {
+          user_id: state.user.id,
+          questionnaire_slug: Q_SLUG,
+          responses: responses,
+          updated_at: new Date().toISOString(),
+        };
+        state.message = t('saveQuestionnaire') ? '' : '';
         state.messageOk = true;
-        await refreshSession();
+        renderShell();
       } catch (e) {
         console.error(e);
         state.message = e.message || t('errorGeneric');

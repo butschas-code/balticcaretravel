@@ -3996,30 +3996,129 @@ body {
   color: rgba(0, 33, 70, 0.68);
 }
 
-/* Stack as cards only where styles.css switches comparison tables (max-width: 768px) */
+/* Prices table — mobile card layout */
 @media (max-width: 768px) {
-  .comparison-table.prices-comparison-table tbody tr {
-    background: #fff;
-    border: 1px solid rgba(0, 33, 70, 0.08);
-    box-shadow: 0 2px 12px rgba(0, 33, 70, 0.04);
-  }
-
-  .comparison-table.prices-comparison-table tbody tr:nth-child(even) td,
-  .comparison-table.prices-comparison-table tbody tr:hover td {
+  .prices-table-wrap {
+    overflow-x: visible;
+    border: none;
+    border-top: none;
+    border-bottom: none;
     background: transparent;
   }
 
-  .comparison-table.prices-comparison-table tbody td:last-child {
-    justify-content: space-between;
-    align-items: center;
-    padding-top: var(--space-sm);
+  .prices-comparison-table {
+    min-width: 0;
   }
 
-  .comparison-table.prices-comparison-table tbody td:last-child::before {
+  .prices-comparison-table thead {
+    display: none;
+  }
+
+  .prices-comparison-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .prices-comparison-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid rgba(0, 33, 70, 0.08);
+    border-radius: 1rem;
+    padding: 1.15rem 1.25rem;
+    box-shadow: 0 2px 12px rgba(0, 33, 70, 0.04);
+  }
+
+  .prices-comparison-table tbody tr:nth-child(even) td,
+  .prices-comparison-table tbody tr:hover td {
+    background: transparent;
+  }
+
+  /* Category badge */
+  .prices-comparison-table tbody td:first-child {
+    order: -2;
+    padding: 0 0 0.35rem;
+    border-bottom: none;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent, #52bcfb);
+  }
+
+  .prices-comparison-table tbody td:first-child::before {
+    display: none;
+  }
+
+  /* Treatment name */
+  .prices-comparison-table tbody td:nth-child(2) {
+    order: -1;
+    padding: 0 0 0.85rem;
+    border-bottom: 1px solid rgba(0, 33, 70, 0.06);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--c-navy, #002146);
+    line-height: 1.35;
+  }
+
+  .prices-comparison-table tbody td:nth-child(2)::before {
+    display: none;
+  }
+
+  /* Price rows: Latvia, Germany, Savings */
+  .prices-comparison-table tbody td:nth-child(3),
+  .prices-comparison-table tbody td:nth-child(4),
+  .prices-comparison-table tbody td:last-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(0, 33, 70, 0.04);
+    font-size: 0.9375rem;
+  }
+
+  .prices-comparison-table tbody td:nth-child(3)::before,
+  .prices-comparison-table tbody td:nth-child(4)::before,
+  .prices-comparison-table tbody td:last-child::before {
     content: attr(data-label);
+    font-size: 0.8125rem;
     font-weight: 500;
-    color: var(--color-text-secondary);
-    margin-right: var(--space-sm);
+    color: rgba(0, 33, 70, 0.5);
+    flex-shrink: 0;
+    margin-right: 1rem;
+  }
+
+  /* Latvia price — highlight */
+  .prices-comparison-table tbody td:nth-child(3) {
+    font-weight: 700;
+    color: var(--c-navy, #002146);
+  }
+
+  /* Germany price */
+  .prices-comparison-table tbody td:nth-child(4) {
+    color: rgba(0, 33, 70, 0.6);
+  }
+
+  /* Savings row */
+  .prices-comparison-table tbody td:last-child {
+    border-bottom: none;
+    padding-top: 0.65rem;
+    padding-bottom: 0;
+  }
+
+  .prices-comparison-table tbody td:last-child .prices-savings {
+    font-weight: 700;
+    color: #0a7c42;
+  }
+
+  .prices-comparison-table tbody td:last-child .prices-savings--na {
+    color: rgba(0, 33, 70, 0.35);
+    font-weight: 400;
+  }
+
+  .prices-table-cell--note {
+    font-size: 0.8125rem;
   }
 }
 

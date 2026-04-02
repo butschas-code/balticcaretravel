@@ -414,12 +414,17 @@ body {
   color: rgba(255, 255, 255, 0.3);
   opacity: 0;
   animation: heroUp 0.9s 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-scroll-arrow {
   display: inline-block;
   animation: scrollBounce 2.5s 2.5s ease-in-out infinite;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 
 /* ===== TRUST STRIP ===== */
@@ -1760,35 +1765,12 @@ body {
 
 /* ===== MOBILE RESPONSIVE ===== */
 
-.nav-mobile-cta { display: none; }
-
 @media (max-width: 1024px) {
   .nav-links { gap: 1rem; }
   .nav-links a { font-size: 0.75rem; }
   .nav-ctas { gap: 0.35rem; }
   .nav-cta-btn { padding: 0.45rem 1rem; font-size: 0.75rem; }
   .nav-cta-secondary { padding: 0.45rem 0.85rem; font-size: 0.75rem; }
-}
-
-@media (max-width: 900px) {
-  .site-header { padding: 0.875rem 1.25rem; }
-  .nav { gap: 0.75rem; }
-  .nav-links { display: none; }
-
-  .nav-mobile-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #52bcfb 0%, #3aadee 100%);
-    color: #002146;
-    border-radius: 100px;
-    padding: 0.5rem 1rem;
-    font-size: 0.8125rem;
-    font-weight: 700;
-    text-decoration: none;
-    white-space: nowrap;
-    box-shadow: 0 2px 12px rgba(82,188,251,0.3);
-  }
 }
 
 @media (max-width: 768px) {
@@ -1819,6 +1801,61 @@ body {
     padding-top: 0;
   }
 
+  .hero-actions-home {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .hero-actions-home .btn-hero-primary,
+  .hero-actions-home .btn-hero-ghost {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    min-height: 48px;
+  }
+
+  .section-why-latvia {
+    min-height: auto;
+  }
+
+  .cta-final-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-final-actions .btn-cta-primary,
+  .cta-final-actions .btn-cta-ghost {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    min-height: 48px;
+  }
+
+  .footer-contact-btn {
+    min-height: 44px;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .site-footer-home .footer-contact-btn {
+    padding: 0.55rem 1.15rem;
+    font-size: 0.8125rem;
+    min-height: 44px;
+  }
+
+  .site-footer-home .footer-nav a {
+    font-size: 0.8125rem;
+    padding: 0.25rem 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
 }
 
 @media (max-width: 680px) {
@@ -1826,10 +1863,14 @@ body {
   .hero-home::after { display: none; }
 
   .hero-inner-home {
-    padding: 0 1.5rem 3.5rem;
+    padding: 0 1.25rem 3rem;
   }
 
-  .hero-title-home { font-size: clamp(2rem, 8vw, 2.75rem); }
+  .hero-title-home { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+
+  .hero-subtitle {
+    font-size: clamp(0.9375rem, 3.5vw, 1.125rem);
+  }
 
   /* Process timeline: collapse to single column */
   .process-timeline-wrap::before {
@@ -1862,6 +1903,15 @@ body {
     flex-direction: column;
     gap: 0.75rem;
     align-items: flex-start;
+  }
+
+  .why-latvia-facts {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .why-latvia-fact__label {
+    font-size: 0.75rem;
   }
 }
 

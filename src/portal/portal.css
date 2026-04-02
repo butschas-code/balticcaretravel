@@ -548,11 +548,75 @@
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 768px) {
   .portal-row-split {
     grid-template-columns: 1fr;
   }
 
+  .portal-steps {
+    gap: 0.35rem;
+  }
+
+  .portal-step + .portal-step::before {
+    width: 0.75rem;
+    margin-right: 0.25rem;
+  }
+
+  .portal-step-num {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.65rem;
+  }
+
+  .portal-step {
+    font-size: 0.7rem;
+  }
+
+  .portal-auth-tabs .portal-btn {
+    padding: 0.65rem 1.15rem;
+    font-size: 0.875rem;
+    min-height: 44px;
+  }
+
+  .portal-btn {
+    min-height: 48px;
+    padding: 0.85rem 1.4rem;
+  }
+
+  .portal-check input[type="checkbox"] {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .portal-field input[type="text"],
+  .portal-field input[type="email"],
+  .portal-field input[type="password"],
+  .portal-field input[type="tel"],
+  .portal-field select,
+  .portal-field textarea {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    min-height: 48px;
+  }
+
+  .portal-field input[type="file"] {
+    min-height: 48px;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .portal-table th,
+  .portal-table td {
+    padding: 0.55rem 0.65rem;
+    font-size: 0.8125rem;
+  }
+
+  .portal-file-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 540px) {
   .portal-actions {
     flex-direction: column;
   }

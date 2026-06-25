@@ -2,5 +2,11 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm ci",
-  "framework": "vite"
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/outreach/:path*",
+      "destination": "https://newsletter.nordoravital.com/api/outreach/:path*"
+    }
+  ]
 }

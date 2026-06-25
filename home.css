@@ -3808,11 +3808,12 @@ body {
 }
 
 .prices-comparison-table {
-  min-width: 980px;
+  min-width: 1080px;
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
   font-size: 0.9375rem;
+  table-layout: fixed;
 }
 
 .prices-comparison-table thead th {
@@ -3849,11 +3850,31 @@ body {
 .prices-comparison-table tbody td:first-child {
   font-weight: 500;
   color: rgba(0, 33, 70, 0.75);
+  width: 18%;
 }
 
 .prices-comparison-table tbody td:nth-child(2) {
   font-weight: 500;
   color: var(--c-navy);
+  width: 33%;
+}
+
+.prices-comparison-table th:nth-child(3),
+.prices-comparison-table td:nth-child(3) {
+  width: 14%;
+  white-space: nowrap;
+}
+
+.prices-comparison-table th:nth-child(4),
+.prices-comparison-table td:nth-child(4) {
+  width: 18%;
+  white-space: nowrap;
+}
+
+.prices-comparison-table th:last-child,
+.prices-comparison-table td:last-child {
+  width: 17%;
+  white-space: nowrap;
 }
 
 .prices-comparison-table tbody tr:last-child td {
@@ -4083,6 +4104,8 @@ body {
     padding: 0.55rem 0;
     border-bottom: 1px solid rgba(0, 33, 70, 0.04);
     font-size: 0.9375rem;
+    width: auto;
+    white-space: normal;
   }
 
   .prices-comparison-table tbody td:nth-child(3)::before,

@@ -519,7 +519,7 @@
         colCategory: 'Bereich',
         colTreatment: 'Behandlung',
         colLatviaFrom: 'Lettland',
-        colGermany: 'Deutschland / Österreich',
+        colGermany: 'Deutschland',
         colSavings: 'Mögliche Ersparnis',
         tableDisclaimer:
           'Die genannten Preise sind Orientierungswerte auf Basis unserer Partnerangebote und typischer Vergleichspreise im deutschsprachigen Raum. Der finale Preis hängt von Befund, Materialwahl, Knochenaufbau, Anzahl der Termine und dem individuellen Behandlungsplan der Klinik ab.',
@@ -1342,7 +1342,7 @@
         colCategory: 'Category',
         colTreatment: 'Treatment',
         colLatviaFrom: 'Latvia',
-        colGermany: 'Germany / Austria',
+        colGermany: 'Germany',
         colSavings: 'Potential savings',
         tableDisclaimer:
           'The prices shown are orientation values based on our partner offers and typical comparison prices in German-speaking markets. The final price depends on findings, material choice, bone grafting, number of appointments and the clinic’s individual treatment plan.',

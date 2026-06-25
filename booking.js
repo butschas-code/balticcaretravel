@@ -7,10 +7,13 @@ const state = {
   days: [],
   selectedDate: '',
   selectedSlot: '',
+  currentMonth: '',
   booked: new Set(),
   loading: true,
   statusKey: 'loading',
 };
+
+const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 const els = {
   status: document.getElementById('booking-status'),
@@ -73,6 +76,30 @@ function dateKeyToUtcNoon(dateKey) {
   return new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
 }
 
+function addDays(dateKey, days) {
+  const date = dateKeyToUtcNoon(dateKey);
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+function monthKey(dateKey) {
+  return dateKey ? dateKey.slice(0, 7) : '';
+}
+
+function monthStart(month) {
+  return `${month}-01`;
+}
+
+function addMonths(month, diff) {
+  const [year, monthNumber] = month.split('-').map(Number);
+  const date = new Date(Date.UTC(year, monthNumber - 1 + diff, 1, 12, 0, 0));
+  return date.toISOString().slice(0, 7);
+}
+
+function compareMonth(a, b) {
+  return a.localeCompare(b);
+}
+
 function zonedTimeToUtc(dateKey, hour, minute) {
   const [year, month, day] = dateKey.split('-').map(Number);
   const target = Date.UTC(year, month - 1, day, hour, minute, 0);
@@ -116,6 +143,26 @@ function formatTime(iso) {
   }).format(new Date(iso));
 }
 
+function formatMonthLabel(month) {
+  return new Intl.DateTimeFormat(locale(), {
+    timeZone: TIMEZONE,
+    month: 'long',
+    year: 'numeric',
+  }).format(dateKeyToUtcNoon(monthStart(month)));
+}
+
+function formatWeekdayLabel(index) {
+  const base = new Date(Date.UTC(2026, 0, 5 + index, 12, 0, 0));
+  return new Intl.DateTimeFormat(locale(), {
+    timeZone: TIMEZONE,
+    weekday: 'short',
+  }).format(base);
+}
+
+function weekdayIndex(dateKey) {
+  return WEEKDAYS.indexOf(zonedParts(dateKeyToUtcNoon(dateKey)).weekday);
+}
+
 function buildDays() {
   const keys = [];
   const seen = new Set();
@@ -133,6 +180,7 @@ function buildDays() {
 
   state.days = keys;
   if (!state.selectedDate && keys.length) state.selectedDate = keys[0];
+  if (!state.currentMonth && state.selectedDate) state.currentMonth = monthKey(state.selectedDate);
 }
 
 function buildSlots(dateKey) {
@@ -153,33 +201,98 @@ function buildSlots(dateKey) {
 
 function renderDays() {
   els.days.innerHTML = '';
-  state.days.forEach((dateKey) => {
+  els.days.classList.add('booking-calendar');
+
+  const minMonth = monthKey(state.days[0]);
+  const maxMonth = monthKey(state.days[state.days.length - 1]);
+  if (!state.currentMonth) state.currentMonth = minMonth;
+
+  const calendarHead = document.createElement('div');
+  calendarHead.className = 'booking-calendar__head';
+
+  const prev = document.createElement('button');
+  prev.type = 'button';
+  prev.className = 'booking-calendar__nav';
+  prev.setAttribute('aria-label', text('previousMonth', 'Previous month'));
+  prev.textContent = '‹';
+  prev.disabled = compareMonth(state.currentMonth, minMonth) <= 0;
+  prev.addEventListener('click', () => {
+    state.currentMonth = addMonths(state.currentMonth, -1);
+    render();
+  });
+
+  const month = document.createElement('div');
+  month.className = 'booking-calendar__month';
+  month.textContent = formatMonthLabel(state.currentMonth);
+
+  const next = document.createElement('button');
+  next.type = 'button';
+  next.className = 'booking-calendar__nav';
+  next.setAttribute('aria-label', text('nextMonth', 'Next month'));
+  next.textContent = '›';
+  next.disabled = compareMonth(state.currentMonth, maxMonth) >= 0;
+  next.addEventListener('click', () => {
+    state.currentMonth = addMonths(state.currentMonth, 1);
+    render();
+  });
+
+  calendarHead.append(prev, month, next);
+
+  const weekdayRow = document.createElement('div');
+  weekdayRow.className = 'booking-calendar__weekdays';
+  WEEKDAYS.forEach((_, index) => {
+    const label = document.createElement('span');
+    label.textContent = formatWeekdayLabel(index);
+    weekdayRow.appendChild(label);
+  });
+
+  const grid = document.createElement('div');
+  grid.className = 'booking-calendar__grid';
+
+  const availableDays = new Set(state.days);
+  const first = monthStart(state.currentMonth);
+  const start = addDays(first, -weekdayIndex(first));
+
+  for (let index = 0; index < 42; index += 1) {
+    const dateKey = addDays(start, index);
+    const parts = zonedParts(dateKeyToUtcNoon(dateKey));
+    const inMonth = monthKey(dateKey) === state.currentMonth;
+    const isWeekend = parts.weekday === 'Sat' || parts.weekday === 'Sun';
+    const slots = availableDays.has(dateKey) ? buildSlots(dateKey) : [];
+    const isAvailable = inMonth && !isWeekend && slots.length > 0;
+
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'booking-day';
     button.dataset.date = dateKey;
     button.setAttribute('aria-pressed', dateKey === state.selectedDate ? 'true' : 'false');
+    button.disabled = !isAvailable;
+    if (!inMonth) button.classList.add('is-outside-month');
+    if (isWeekend) button.classList.add('is-weekend');
 
     const label = document.createElement('span');
     label.className = 'booking-day__label';
-    label.textContent = formatDateLabel(dateKey);
+    label.textContent = String(Number(parts.day));
 
     const count = document.createElement('span');
     count.className = 'booking-day__count';
-    const slots = buildSlots(dateKey);
-    count.textContent = slots.length
-      ? text('openCount', '{n} open', { n: String(slots.length) })
-      : text('full', 'Full');
+    count.textContent = !inMonth || isWeekend
+      ? ''
+      : slots.length
+        ? text('openCountShort', '{n} open', { n: String(slots.length) })
+        : text('full', 'Full');
 
-    button.disabled = !slots.length;
     button.append(label, count);
     button.addEventListener('click', () => {
       state.selectedDate = dateKey;
+      state.currentMonth = monthKey(dateKey);
       state.selectedSlot = '';
       render();
     });
-    els.days.appendChild(button);
-  });
+    grid.appendChild(button);
+  }
+
+  els.days.append(calendarHead, weekdayRow, grid);
 }
 
 function renderSlots() {

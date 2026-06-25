@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Book a 15-minute discovery call with Baltic Care Travel." />
-  <title>Partner Discovery Call | Baltic Care Travel</title>
+  <meta name="description" content="Buchen Sie ein 15-minütiges Kennenlerngespräch mit Baltic Care Travel." data-i18n-attr="content:bookingPage.metaDescription" />
+  <title data-i18n-title="bookingPage.pageTitle" data-i18n-title-mode="full">Partner-Discovery-Call | Baltic Care Travel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -21,13 +21,17 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" data-i18n="nav.home">Startseite</a></li>
+        <li><a href="about.html" data-i18n="nav.about">Über uns</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Kontakt</a></li>
       </ul>
 
       <div class="nav-ctas">
-        <a href="#booking-form" class="nav-cta-btn">Book call</a>
+        <div class="lang-switcher" role="group" aria-label="Language">
+          <button type="button" data-lang="de" class="is-active" aria-current="true">DE</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
+        <a href="#booking-form" class="nav-cta-btn" data-i18n="bookingPage.navBookCall">Termin buchen</a>
       </div>
 
       <button type="button" class="nav-burger" aria-label="Menu" aria-expanded="false">
@@ -42,17 +46,17 @@
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-inner hero-inner-home">
-        <p class="hero-eyebrow">Partner discovery</p>
-        <h1 id="booking-hero-title" class="hero-title hero-title-home">Book a 15-minute discovery call</h1>
-        <p class="hero-subtitle">
-          Choose an open weekday slot between 08:00 and 20:00 Riga time.
+        <p class="hero-eyebrow" data-i18n="bookingPage.heroEyebrow">Partnergespräch</p>
+        <h1 id="booking-hero-title" class="hero-title hero-title-home" data-i18n="bookingPage.heroTitle">15-minütiges Kennenlerngespräch buchen</h1>
+        <p class="hero-subtitle" data-i18n="bookingPage.heroSub">
+          Wählen Sie einen freien Termin von Montag bis Freitag zwischen 08:00 und 20:00 Uhr (Riga-Zeit).
         </p>
         <div class="hero-actions hero-actions-home">
-          <a href="#booking-form" class="btn-hero-primary">Choose a time</a>
+          <a href="#booking-form" class="btn-hero-primary" data-i18n="bookingPage.heroCta">Termin auswählen</a>
         </div>
       </div>
 
-      <a href="#booking-form" class="hero-scroll-hint" aria-label="Continue to booking">
+      <a href="#booking-form" class="hero-scroll-hint" aria-label="Weiter zur Buchung" data-i18n-attr="aria-label:bookingPage.heroScroll">
         <span class="hero-scroll-arrow" aria-hidden="true">↓</span>
       </a>
     </section>
@@ -60,66 +64,66 @@
     <section class="section section-booking" id="booking-form" data-animate>
       <div class="booking-shell">
         <header class="booking-header">
-          <span class="section-eyebrow">Calendar</span>
-          <h2 class="booking-title">Select a time</h2>
-          <p class="booking-lead">
-            All times are shown in Europe/Riga. Bookings are 15 minutes.
+          <span class="section-eyebrow" data-i18n="bookingPage.calendarEyebrow">Kalender</span>
+          <h2 class="booking-title" data-i18n="bookingPage.calendarTitle">Termin auswählen</h2>
+          <p class="booking-lead" data-i18n="bookingPage.calendarLead">
+            Alle Zeiten werden in Europe/Riga angezeigt. Termine dauern 15 Minuten.
           </p>
         </header>
 
         <div class="booking-layout">
           <section class="booking-panel booking-panel-calendar" aria-labelledby="booking-calendar-title">
             <div class="booking-panel-head">
-              <h3 id="booking-calendar-title">Available days</h3>
-              <button type="button" class="booking-refresh-btn" id="booking-refresh">Refresh</button>
+              <h3 id="booking-calendar-title" data-i18n="bookingPage.availableDays">Verfügbare Tage</h3>
+              <button type="button" class="booking-refresh-btn" id="booking-refresh" data-i18n="bookingPage.refresh">Aktualisieren</button>
             </div>
-            <p class="booking-status" id="booking-status" role="status">Loading available slots…</p>
-            <div class="booking-days" id="booking-days" aria-label="Available weekdays"></div>
+            <p class="booking-status" id="booking-status" role="status">Freie Termine werden geladen...</p>
+            <div class="booking-days" id="booking-days" aria-label="Verfügbare Wochentage" data-i18n-attr="aria-label:bookingPage.availableWeekdaysAria"></div>
             <div class="booking-slots-wrap">
-              <h3 class="booking-slots-title" id="booking-slots-title">Choose a day</h3>
-              <div class="booking-slots" id="booking-slots" aria-label="Available times"></div>
+              <h3 class="booking-slots-title" id="booking-slots-title">Tag auswählen</h3>
+              <div class="booking-slots" id="booking-slots" aria-label="Verfügbare Uhrzeiten" data-i18n-attr="aria-label:bookingPage.availableTimesAria"></div>
             </div>
           </section>
 
           <section class="booking-panel booking-panel-form" aria-labelledby="booking-details-title">
-            <h3 id="booking-details-title">Your details</h3>
-            <p class="booking-selected" id="booking-selected">No time selected yet.</p>
+            <h3 id="booking-details-title" data-i18n="bookingPage.detailsTitle">Ihre Angaben</h3>
+            <p class="booking-selected" id="booking-selected">Noch kein Termin ausgewählt.</p>
 
             <form class="booking-form" id="booking-form-submit" novalidate>
               <input type="hidden" id="booking-start-at" name="startAt" />
 
               <div class="form-row">
-                <label for="booking-name" class="form-label form-label-contact">Name <span class="form-required" aria-hidden="true">*</span></label>
+                <label for="booking-name" class="form-label form-label-contact"><span data-i18n="bookingPage.fieldName">Name</span> <span class="form-required" aria-hidden="true">*</span></label>
                 <input type="text" id="booking-name" name="name" class="form-input form-input-contact" autocomplete="name" maxlength="120" required />
               </div>
 
               <div class="form-row">
-                <label for="booking-email" class="form-label form-label-contact">Email <span class="form-required" aria-hidden="true">*</span></label>
+                <label for="booking-email" class="form-label form-label-contact"><span data-i18n="bookingPage.fieldEmail">E-Mail</span> <span class="form-required" aria-hidden="true">*</span></label>
                 <input type="email" id="booking-email" name="email" class="form-input form-input-contact" autocomplete="email" maxlength="254" required />
               </div>
 
               <div class="form-row">
-                <label for="booking-company" class="form-label form-label-contact">Company</label>
+                <label for="booking-company" class="form-label form-label-contact" data-i18n="bookingPage.fieldCompany">Unternehmen</label>
                 <input type="text" id="booking-company" name="company" class="form-input form-input-contact" autocomplete="organization" maxlength="160" />
               </div>
 
               <div class="form-row">
-                <label for="booking-phone" class="form-label form-label-contact">Phone</label>
+                <label for="booking-phone" class="form-label form-label-contact" data-i18n="bookingPage.fieldPhone">Telefon</label>
                 <input type="tel" id="booking-phone" name="phone" class="form-input form-input-contact" autocomplete="tel" maxlength="60" />
               </div>
 
               <div class="form-row">
-                <label for="booking-notes" class="form-label form-label-contact">Anything useful to know?</label>
+                <label for="booking-notes" class="form-label form-label-contact" data-i18n="bookingPage.fieldNotes">Was sollten wir wissen?</label>
                 <textarea id="booking-notes" name="notes" class="form-textarea form-textarea-contact" rows="4" maxlength="1500"></textarea>
               </div>
 
               <label class="form-checkbox-label booking-privacy" for="booking-privacy">
                 <input type="checkbox" id="booking-privacy" name="privacy" class="form-checkbox" value="1" required />
-                <span>I agree that Baltic Care Travel may process my details to arrange this call.</span>
+                <span data-i18n="bookingPage.privacy">Ich bin einverstanden, dass Baltic Care Travel meine Angaben zur Organisation dieses Gesprächs verarbeitet.</span>
               </label>
 
               <button type="submit" class="btn-contact-submit booking-submit" id="booking-submit" disabled>
-                Book 15-minute call
+                15-Minuten-Termin buchen
               </button>
               <p class="booking-form-message" id="booking-form-message" role="status"></p>
             </form>
@@ -135,12 +139,13 @@
         <a href="index.html" class="nav-logo">
           <img src="images/logo.png" alt="Baltic Care Travel" height="36" class="nav-logo-img" />
         </a>
-        <p class="footer-tagline">Treatment coordination · Latvia</p>
+        <p class="footer-tagline" data-i18n="bookingPage.footerTagline">Behandlungskoordination · Lettland</p>
       </div>
-      <a href="contact.html" class="footer-contact-btn">Contact</a>
+      <a href="contact.html" class="footer-contact-btn" data-i18n="nav.contact">Kontakt</a>
     </div>
   </footer>
 
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
   <script type="module" src="booking.js"></script>
 </body>

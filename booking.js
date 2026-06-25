@@ -9,6 +9,7 @@ const state = {
   selectedSlot: '',
   booked: new Set(),
   loading: true,
+  statusKey: 'loading',
 };
 
 const els = {
@@ -26,6 +27,22 @@ const els = {
 
 function pad(value) {
   return String(value).padStart(2, '0');
+}
+
+function currentLang() {
+  const lang = window.BHT?.i18n?.getLang?.() || document.documentElement.getAttribute('lang') || 'de';
+  return lang === 'en' ? 'en' : 'de';
+}
+
+function text(key, fallback, vars) {
+  const value = window.BHT?.i18n?.get?.(`bookingPage.${key}`, currentLang()) || fallback || '';
+  return Object.entries(vars || {}).reduce((out, [name, replacement]) => {
+    return out.replace(new RegExp(`\\{${name}\\}`, 'g'), replacement);
+  }, value);
+}
+
+function locale() {
+  return currentLang() === 'de' ? 'de-DE' : 'en-GB';
 }
 
 function zonedParts(date) {
@@ -71,7 +88,7 @@ function zonedTimeToUtc(dateKey, hour, minute) {
 }
 
 function formatDateLabel(dateKey) {
-  return new Intl.DateTimeFormat('en-GB', {
+  return new Intl.DateTimeFormat(locale(), {
     timeZone: TIMEZONE,
     weekday: 'short',
     day: '2-digit',
@@ -80,7 +97,7 @@ function formatDateLabel(dateKey) {
 }
 
 function formatLongSlot(iso) {
-  return new Intl.DateTimeFormat('en-GB', {
+  return new Intl.DateTimeFormat(locale(), {
     timeZone: TIMEZONE,
     weekday: 'long',
     day: '2-digit',
@@ -92,7 +109,7 @@ function formatLongSlot(iso) {
 }
 
 function formatTime(iso) {
-  return new Intl.DateTimeFormat('en-GB', {
+  return new Intl.DateTimeFormat(locale(), {
     timeZone: TIMEZONE,
     hour: '2-digit',
     minute: '2-digit',
@@ -150,7 +167,9 @@ function renderDays() {
     const count = document.createElement('span');
     count.className = 'booking-day__count';
     const slots = buildSlots(dateKey);
-    count.textContent = slots.length ? `${slots.length} open` : 'Full';
+    count.textContent = slots.length
+      ? text('openCount', '{n} open', { n: String(slots.length) })
+      : text('full', 'Full');
 
     button.disabled = !slots.length;
     button.append(label, count);
@@ -166,12 +185,12 @@ function renderDays() {
 function renderSlots() {
   const slots = buildSlots(state.selectedDate);
   els.slots.innerHTML = '';
-  els.slotsTitle.textContent = state.selectedDate ? formatDateLabel(state.selectedDate) : 'Choose a day';
+  els.slotsTitle.textContent = state.selectedDate ? formatDateLabel(state.selectedDate) : text('chooseDay', 'Choose a day');
 
   if (!slots.length) {
     const empty = document.createElement('p');
     empty.className = 'booking-empty';
-    empty.textContent = 'No open slots on this day.';
+    empty.textContent = text('noOpenSlots', 'No open slots on this day.');
     els.slots.appendChild(empty);
     return;
   }
@@ -202,13 +221,18 @@ function renderSelected() {
     els.startAt.value = state.selectedSlot;
     els.submit.disabled = false;
   } else {
-    els.selected.textContent = 'No time selected yet.';
+    els.selected.textContent = text('noTimeSelected', 'No time selected yet.');
     els.startAt.value = '';
     els.submit.disabled = true;
   }
 }
 
+function renderStatus() {
+  els.status.textContent = text(state.statusKey, 'Loading available slots...');
+}
+
 function render() {
+  renderStatus();
   renderDays();
   renderSlots();
   renderSelected();
@@ -216,7 +240,8 @@ function render() {
 
 async function loadBookings() {
   state.loading = true;
-  els.status.textContent = 'Loading available slots…';
+  state.statusKey = 'loading';
+  renderStatus();
   els.message.textContent = '';
 
   buildDays();
@@ -227,14 +252,16 @@ async function loadBookings() {
   try {
     const response = await fetch(`${API_URL}?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`);
     const data = await response.json();
-    if (!response.ok) throw new Error(data.error || 'Could not load booked slots.');
+    if (!response.ok) throw new Error(data.error || text('loadBookedFailed', 'Could not load booked slots.'));
     state.booked = new Set((data.bookings || []).map((booking) => booking.start_at));
     state.loading = false;
-    els.status.textContent = 'Calendar is up to date.';
+    state.statusKey = 'statusReady';
+    renderStatus();
   } catch (err) {
     state.booked = new Set();
     state.loading = false;
-    els.status.textContent = 'Could not load live availability. Please refresh in a moment.';
+    state.statusKey = 'statusLoadFailed';
+    renderStatus();
   }
 
   if (!buildSlots(state.selectedDate).length) {
@@ -266,11 +293,11 @@ async function submitBooking(event) {
   setFormMessage('', '');
 
   if (!state.selectedSlot) {
-    setFormMessage('Please choose a time slot first.', 'error');
+    setFormMessage(text('chooseSlotFirst', 'Please choose a time slot first.'), 'error');
     return;
   }
   if (!document.getElementById('booking-privacy').checked) {
-    setFormMessage('Please confirm the consent checkbox.', 'error');
+    setFormMessage(text('consentRequired', 'Please confirm the consent checkbox.'), 'error');
     return;
   }
   if (!els.form.checkValidity()) {
@@ -279,7 +306,7 @@ async function submitBooking(event) {
   }
 
   els.submit.disabled = true;
-  els.submit.textContent = 'Booking…';
+  els.submit.textContent = text('booking', 'Booking...');
 
   try {
     const response = await fetch(API_URL, {
@@ -288,7 +315,7 @@ async function submitBooking(event) {
       body: JSON.stringify(formPayload()),
     });
     const data = await response.json();
-    if (!response.ok && response.status !== 202) throw new Error(data.error || 'Could not complete booking.');
+    if (!response.ok && response.status !== 202) throw new Error(data.error || text('completeFailed', 'Could not complete booking.'));
 
     state.booked.add(state.selectedSlot);
     const confirmedSlot = formatLongSlot(state.selectedSlot);
@@ -297,20 +324,21 @@ async function submitBooking(event) {
     render();
 
     if (data.warning) {
-      var detail = data.emailError ? ` Email error: ${data.emailError}` : '';
-      setFormMessage(`Booked for ${confirmedSlot}. Confirmation email needs a manual retry.${detail}`, 'warning');
+      var detail = data.emailError ? text('emailError', ' Email error: {error}', { error: data.emailError }) : '';
+      setFormMessage(text('bookedWarning', 'Booked for {slot}. Confirmation email needs a manual retry.', { slot: confirmedSlot }) + detail, 'warning');
     } else {
-      setFormMessage(`Booked for ${confirmedSlot}. Confirmation emails are on their way.`, 'success');
+      setFormMessage(text('bookedSuccess', 'Booked for {slot}. Confirmation emails are on their way.', { slot: confirmedSlot }), 'success');
     }
   } catch (err) {
-    setFormMessage(err.message || 'Could not complete booking. Please try another slot.', 'error');
+    setFormMessage(err.message || text('tryAnotherSlot', 'Could not complete booking. Please try another slot.'), 'error');
   } finally {
-    els.submit.textContent = 'Book 15-minute call';
+    els.submit.textContent = text('submit', 'Book 15-minute call');
     renderSelected();
   }
 }
 
 if (els.refresh) els.refresh.addEventListener('click', loadBookings);
 if (els.form) els.form.addEventListener('submit', submitBooking);
+document.addEventListener('bht-lang-change', render);
 
 loadBookings();

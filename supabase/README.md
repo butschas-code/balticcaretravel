@@ -97,11 +97,8 @@ The shareable booking page is `/booking.html`. It uses the Vercel API route `/ap
 2. Add these Vercel environment variables:
    - `SUPABASE_URL` or `VITE_SUPABASE_URL`
    - `SUPABASE_SERVICE_ROLE_KEY` (server-only; never expose this in frontend code)
-   - `SMTP_HOST` (for Zoho EU domain mail, usually `smtppro.zoho.eu`; global accounts may use `smtppro.zoho.com`)
-   - `SMTP_PORT` (`465` for SSL, or `587` for TLS)
-   - `SMTP_USER` (the full Zoho mailbox, e.g. `sascha@balticcaretravel.com`)
-   - `SMTP_PASS` (the Zoho mailbox password or an app-specific password if 2FA is enabled)
-   - `BOOKING_FROM_EMAIL` (optional, e.g. `Baltic Care Travel <sascha@balticcaretravel.com>`)
+   - `RESEND_API_KEY`
+   - `BOOKING_FROM_EMAIL` (e.g. `Baltic Care Travel <bookings@balticcaretravel.com>`)
    - `BOOKING_MEETING_LOCATION` (optional; defaults to the Zoom room `https://us05web.zoom.us/j/3512850325?pwd=dscobVBwpaJbsbbzHtP7ciaJgmwxVN.1&omn=82113167293`)
 3. Deploy. Share `https://your-domain/booking.html` with cooperation partners.
 

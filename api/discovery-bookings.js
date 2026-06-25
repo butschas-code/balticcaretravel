@@ -1,6 +1,5 @@
 const { createClient } = require('@supabase/supabase-js');
 const { randomUUID } = require('crypto');
-const nodemailer = require('nodemailer');
 
 const TIMEZONE = 'Europe/Riga';
 const OWNER_EMAIL = 'sascha@balticcaretravel.com';
@@ -126,6 +125,43 @@ function createIcs({ startAt, endAt, name, company }) {
 }
 
 async function sendEmail({ to, subject, html, ics }) {
+  const resendKey = String(process.env.RESEND_API_KEY || '').trim();
+  const resendFrom = process.env.BOOKING_FROM_EMAIL || 'Baltic Care Travel <bookings@balticcaretravel.com>';
+
+  if (resendKey) {
+    const payload = {
+      from: resendFrom,
+      to: Array.isArray(to) ? to : [to],
+      reply_to: OWNER_EMAIL,
+      subject,
+      html,
+      attachments: ics
+        ? [
+            {
+              filename: 'discovery-call.ics',
+              content: Buffer.from(ics, 'utf8').toString('base64'),
+            },
+          ]
+        : [],
+    };
+
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${resendKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(`Resend error ${response.status}: ${text}`);
+    }
+    return;
+  }
+
+  const nodemailer = require('nodemailer');
   const host = String(process.env.SMTP_HOST || 'smtp.zoho.eu').trim();
   const port = Number(String(process.env.SMTP_PORT || 465).trim());
   const user = String(process.env.SMTP_USER || '').trim();

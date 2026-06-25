@@ -297,7 +297,8 @@ async function submitBooking(event) {
     render();
 
     if (data.warning) {
-      setFormMessage(`Booked for ${confirmedSlot}. Confirmation email needs a manual retry.`, 'warning');
+      var detail = data.emailError ? ` Email error: ${data.emailError}` : '';
+      setFormMessage(`Booked for ${confirmedSlot}. Confirmation email needs a manual retry.${detail}`, 'warning');
     } else {
       setFormMessage(`Booked for ${confirmedSlot}. Confirmation emails are on their way.`, 'success');
     }

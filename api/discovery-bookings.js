@@ -93,6 +93,14 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
+function publicEmailError(err) {
+  const message = String((err && err.message) || err || 'Unknown email error.');
+  return message
+    .replace(/pass(word)?["'=:\s]+[^,\s}]+/gi, 'password=[hidden]')
+    .replace(/Bearer\s+[a-z0-9._-]+/gi, 'Bearer [hidden]')
+    .slice(0, 500);
+}
+
 function createIcs({ startAt, endAt, name, company }) {
   const start = new Date(startAt);
   const end = new Date(endAt);
@@ -288,13 +296,16 @@ async function handlePost(req, res, supabase) {
       }),
     ]);
   } catch (err) {
+    const emailError = publicEmailError(err);
+    console.error('Booking confirmation email failed:', emailError);
     await supabase
       .from('partner_discovery_bookings')
-      .update({ confirmation_error: err.message.slice(0, 500) })
+      .update({ confirmation_error: emailError })
       .eq('id', data.id);
     return json(res, 202, {
       booking: data,
       warning: 'The booking was saved, but confirmation email could not be sent yet.',
+      emailError,
     });
   }
 

@@ -140,28 +140,28 @@
       leadEn: 'Fertility / reproductive medicine · Riga, Latvia',
       heroBg: IMG_IVF,
       overview:
-        'Nordic Fertility Riga ist ein spezialisiertes Kinderwunschzentrum mit modernen Laboren, erfahrenem Team und diskretem, internationalem Rahmen. Schwerpunkte: IVF, ICSI und strukturierte Beratung.',
+        'Kommt bald: Der Bereich Kinderwunsch / IVF wird derzeit vorbereitet. Klinikprofile, Abläufe und konkrete Informationen werden schrittweise ergänzt.',
       overviewEn:
-        'Nordic Fertility Riga is a specialised fertility centre with modern labs, an experienced team, and a discreet international setting. Focus: IVF, ICSI, and structured counselling.',
+        'Coming soon: the fertility / IVF area is currently being prepared. Clinic profiles, pathways and concrete information will be added step by step.',
       overviewSecondaryDe:
-        'Besonders wertvoll, wenn Sie Termine, Unterlagen und sensible Fragen zentral koordinieren möchten. Wir helfen bei der strukturierten Übergabe an die Klinik und bleiben Ihre deutschsprachige Anlaufstelle.',
+        'Aktuell starten wir mit Dental. Für Kinderwunsch / IVF bereiten wir Inhalte vor, damit spätere Anfragen diskret, klar und strukturiert begleitet werden können.',
       overviewSecondaryEn:
-        'Especially helpful when you want appointments, documents, and sensitive questions coordinated in one place. We support structured handover to the clinic and remain your German-speaking point of contact.',
+        'We are currently starting with dental. For fertility / IVF, we are preparing content so future enquiries can be supported discreetly, clearly and structurally.',
       journeyDe:
-        'In Riga können Sie Kinderwunschbehandlung mit kurzer Anreise aus Deutschland und EU-nahen Standards kombinieren. Wir klären mit Ihnen realistische Aufenthaltsdauer und sinnvolle Unterlagen.',
+        'Dieser Bereich ist noch nicht live. Die Seite bleibt als Ausblick sichtbar, bis die vorbereiteten IVF-Informationen veröffentlicht werden.',
       journeyEn:
-        'In Riga you can combine fertility treatment with short travel from Germany and EU-aligned standards. We clarify realistic length of stay and useful documents with you.',
+        'This area is not live yet. The page remains visible as a preview until the prepared IVF information is published.',
       treatmentsContextDe:
-        'Schwerpunkt dieser Klinik: Kinderwunsch / IVF. Die Karten unten zeigen unser gesamtes Koordinationsangebot.',
+        'Kinderwunsch / IVF kommt bald. Aktuell startet Baltic Care Travel mit Dental.',
       treatmentsContextEn:
-        'This clinic focuses on fertility / IVF. The cards below show our full coordination offering.',
+        'Fertility / IVF is coming soon. Baltic Care Travel is currently starting with dental.',
       equipment: 'Eigene Labore, Kryo-Lagerung, moderne OP- und Entnahmebereiche. Zertifizierte Qualitätskontrolle.',
       equipmentEn: 'In-house labs, cryostorage, modern retrieval and procedure areas. Certified quality control.',
       certs: ['ISO 9001', 'Lettische Gesundheitsbehörde', 'ESHRE-orientierte Standards', 'Deutschsprachige Patientenbetreuung'],
       testimonial: '„Koordination von Anreise, Unterkunft und Terminen. Diskret und vertraulich.“',
       testimonialEn: '"Coordination of travel, accommodation, and appointments. Discreet and confidential."',
-      ctaLead: 'Wir vermitteln Sie unverbindlich an Nordic Fertility Riga.',
-      ctaLeadEn: 'We will put you in touch with Nordic Fertility Riga without obligation.',
+      ctaLead: 'Kinderwunsch / IVF kommt bald. Aktuell starten wir mit Dental.',
+      ctaLeadEn: 'Fertility / IVF is coming soon. We are currently starting with dental.',
       doctors: [
         {
           name: 'Dr. [Name]',
@@ -193,28 +193,28 @@
       leadEn: 'IVF, ICSI & cryo services · Riga, Latvia',
       heroBg: IMG_IVF,
       overview:
-        'Das Riga IVF & Reproductive Center ergänzt das Kinderwunschangebot in der lettischen Hauptstadt mit einem zweiten, unabhängig organisierten Standort — kurze Wege, moderne Labore und Erfahrung mit deutschsprachigen Patientinnen und Patienten.',
+        'Kommt bald: Der Bereich Kinderwunsch / IVF wird derzeit vorbereitet. Weitere Klinikdetails und Abläufe folgen nach dem Dental-Start.',
       overviewEn:
-        'Riga IVF & Reproductive Center adds a second, independently run fertility location in the Latvian capital — short distances, modern labs, and experience with German-speaking patients.',
+        'Coming soon: the fertility / IVF area is currently being prepared. More clinic details and pathways will follow after the dental launch.',
       overviewSecondaryDe:
-        'Wir helfen Ihnen einzuschätzen, welche Unterlagen für eine Erstanfrage sinnvoll sind und wie Sie Termine mit Ihrem Aufenthalt in Riga abstimmen.',
+        'Aktuell sammeln wir Informationen, damit der IVF-Bereich später diskret, klar und verlässlich dargestellt werden kann.',
       overviewSecondaryEn:
-        'We help you assess which documents make sense for an initial enquiry and how to align appointments with your stay in Riga.',
+        'We are currently collecting information so the IVF area can later be presented discreetly, clearly and reliably.',
       journeyDe:
-        'Zwei spezialisierte Kinderwunschzentren in Riga erlauben oft flexiblere Terminoptionen. Wir koordinieren mit Ihnen, welcher Standort für Ihre Situation passender sein kann.',
+        'Dieser Bereich ist noch nicht live. Die Seite bleibt als Ausblick sichtbar, bis die vorbereiteten IVF-Informationen veröffentlicht werden.',
       journeyEn:
-        'Two specialised fertility centres in Riga often allow more flexible scheduling. We coordinate with you on which site may suit your situation better.',
+        'This area is not live yet. The page remains visible as a preview until the prepared IVF information is published.',
       treatmentsContextDe:
-        'Schwerpunkt: Kinderwunsch / IVF. Die drei Bereiche unten entsprechen unserem einheitlichen Koordinationsangebot.',
+        'Kinderwunsch / IVF kommt bald. Aktuell startet Baltic Care Travel mit Dental.',
       treatmentsContextEn:
-        'Focus: fertility / IVF. The three areas below match our unified coordination offering.',
+        'Fertility / IVF is coming soon. Baltic Care Travel is currently starting with dental.',
       equipment: 'IVF-Labor, ICSI, Kryobank, Ultraschall und Beratungsräume nach EU-Standards.',
       equipmentEn: 'IVF lab, ICSI, cryobank, ultrasound and counselling rooms to EU standards.',
       certs: ['ISO 9001', 'Lettische Gesundheitsbehörde', 'Deutschsprachige Patientenbetreuung'],
       testimonial: '„Strukturierte Abläufe und schnelle Rückmeldungen — genau das, was wir gebraucht haben.“',
       testimonialEn: '"Structured processes and quick responses — exactly what we needed."',
-      ctaLead: 'Wir vermitteln Sie unverbindlich an das Riga IVF & Reproductive Center.',
-      ctaLeadEn: 'We will put you in touch with Riga IVF & Reproductive Center without obligation.',
+      ctaLead: 'Kinderwunsch / IVF kommt bald. Aktuell starten wir mit Dental.',
+      ctaLeadEn: 'Fertility / IVF is coming soon. We are currently starting with dental.',
       doctors: [
         {
           name: 'Dr. [Name]',
@@ -235,21 +235,21 @@
       leadEn: 'Orthopaedics & joint surgery · Riga, Latvia',
       heroBg: IMG_ORTHO,
       overview:
-        'Das Baltic Orthopaedic Center Riga ist auf planbare orthopädische Eingriffe spezialisiert — insbesondere Knie- und Hüft-TEP, ausgewählte Arthroskopien und strukturierte Vorbereitung. Moderne OP-Säle und deutschsprachige Koordination.',
+        'Kommt bald: Der Bereich Orthopädie wird derzeit vorbereitet. Klinikprofile, Abläufe und konkrete Informationen werden schrittweise ergänzt.',
       overviewEn:
-        'Baltic Orthopaedic Center Riga specialises in planned orthopaedic procedures — especially knee and hip arthroplasty, selected arthroscopies, and structured preparation. Modern theatres and German-speaking coordination.',
+        'Coming soon: the orthopaedics area is currently being prepared. Clinic profiles, pathways and concrete information will be added step by step.',
       overviewSecondaryDe:
-        'Geplante Eingriffe brauchen Vertrauen in Diagnostik, OP-Team und Nachsorge. Die Klinik ist auf internationale Patientinnen und Patienten eingestellt — von der Vorbereitung bis zur Entlassung.',
+        'Aktuell starten wir mit Dental. Für Orthopädie bereiten wir Inhalte vor, damit der Bereich später klar und verlässlich dargestellt werden kann.',
       overviewSecondaryEn:
-        'Planned surgery requires trust in diagnostics, the surgical team, and aftercare. The clinic is geared to international patients — from preparation through discharge.',
+        'We are currently starting with dental. For orthopaedics, we are preparing content so this area can later be presented clearly and reliably.',
       journeyDe:
-        'Wir helfen Ihnen, Vorabchecks, Reisetermine und Erholungsphasen realistisch einzuplanen — und begleiten die Kommunikation mit der Klinik.',
+        'Dieser Bereich ist noch nicht live. Die Seite bleibt als Ausblick sichtbar, bis die vorbereiteten Orthopädie-Informationen veröffentlicht werden.',
       journeyEn:
-        'We help you plan pre-operative checks, travel dates, and recovery phases realistically — and support communication with the clinic.',
+        'This area is not live yet. The page remains visible as a preview until the prepared orthopaedics information is published.',
       treatmentsContextDe:
-        'Schwerpunkt: Orthopädie. Die drei Bereiche unten entsprechen unserem Angebot; hier ist Orthopädie führend.',
+        'Orthopädie kommt bald. Aktuell startet Baltic Care Travel mit Dental.',
       treatmentsContextEn:
-        'Focus: orthopaedics. The three areas below reflect our offering; orthopaedics leads here.',
+        'Orthopaedics is coming soon. Baltic Care Travel is currently starting with dental.',
       equipment:
         'Moderne OP-Säle für Endoprothetik und Arthroskopie, Intensiv- und Stationärbereich, Bildgebung. EU-Standards.',
       equipmentEn:
@@ -257,8 +257,8 @@
       certs: ['ISO 9001', 'Lettische Gesundheitsbehörde', 'Deutschsprachige Patientenbetreuung'],
       testimonial: '„Abholservice, Koordination von Aufenthalt und Nachsorge. Transparente Kosten.“',
       testimonialEn: '"Pickup service, coordination of stay and aftercare. Transparent costs."',
-      ctaLead: 'Wir vermitteln Sie unverbindlich an das Baltic Orthopaedic Center Riga.',
-      ctaLeadEn: 'We will put you in touch with Baltic Orthopaedic Center Riga without obligation.',
+      ctaLead: 'Orthopädie kommt bald. Aktuell starten wir mit Dental.',
+      ctaLeadEn: 'Orthopaedics is coming soon. We are currently starting with dental.',
       doctors: [
         {
           name: 'Dr. [Name]',
@@ -290,28 +290,28 @@
       leadEn: 'Orthopaedics, sports medicine & rehabilitation · Riga, Latvia',
       heroBg: IMG_ORTHO,
       overview:
-        'Riga Joint & Sports Orthopaedics ergänzt das orthopädische Angebot in Riga mit Schwerpunkt auf Bewegungsapparat, Sportverletzungen und postoperative Rehabilitation — kompakt organisiert und auf deutschsprachige Patientinnen und Patienten ausgerichtet.',
+        'Kommt bald: Der Bereich Orthopädie wird derzeit vorbereitet. Weitere Klinikdetails und Abläufe folgen nach dem Dental-Start.',
       overviewEn:
-        'Riga Joint & Sports Orthopaedics complements orthopaedic care in Riga with a focus on the locomotor system, sports injuries, and postoperative rehabilitation — compact organisation and German-speaking patients in mind.',
+        'Coming soon: the orthopaedics area is currently being prepared. More clinic details and pathways will follow after the dental launch.',
       overviewSecondaryDe:
-        'Ideal, wenn Sie kurze Wege zwischen Vorbereitung, Eingriff und Physiotherapie schätzen. Wir unterstützen bei der Terminabstimmung und Logistik.',
+        'Aktuell sammeln wir Informationen, damit der Orthopädie-Bereich später klar und verlässlich dargestellt werden kann.',
       overviewSecondaryEn:
-        'Ideal if you value short pathways between preparation, surgery, and physiotherapy. We support scheduling and logistics.',
+        'We are currently collecting information so the orthopaedics area can later be presented clearly and reliably.',
       journeyDe:
-        'Zwei orthopädische Schwerpunktkliniken in Riga erweitern Kapazität und Terminwahl. Wir helfen Ihnen bei der Einordnung, welcher Standort zu Ihrem Fall passt.',
+        'Dieser Bereich ist noch nicht live. Die Seite bleibt als Ausblick sichtbar, bis die vorbereiteten Orthopädie-Informationen veröffentlicht werden.',
       journeyEn:
-        'Two orthopaedic-focused clinics in Riga expand capacity and scheduling options. We help you assess which site fits your case.',
+        'This area is not live yet. The page remains visible as a preview until the prepared orthopaedics information is published.',
       treatmentsContextDe:
-        'Schwerpunkt: Orthopädie und Bewegung. Die drei Bereiche unten zeigen unser gesamtes Koordinationsangebot.',
+        'Orthopädie kommt bald. Aktuell startet Baltic Care Travel mit Dental.',
       treatmentsContextEn:
-        'Focus: orthopaedics and movement. The three areas below show our full coordination offering.',
+        'Orthopaedics is coming soon. Baltic Care Travel is currently starting with dental.',
       equipment: 'OP-Bereich, Physiotherapie, bildgebende Diagnostik, moderne Patientenzimmer.',
       equipmentEn: 'Surgical area, physiotherapy, imaging, modern patient rooms.',
       certs: ['ISO 9001', 'Lettische Gesundheitsbehörde', 'Deutschsprachige Patientenbetreuung'],
       testimonial: '„Professionelle Nachsorge und klare Zeitplanung für den Aufenthalt in Riga.“',
       testimonialEn: '"Professional aftercare and a clear schedule for the stay in Riga."',
-      ctaLead: 'Wir vermitteln Sie unverbindlich an Riga Joint & Sports Orthopaedics.',
-      ctaLeadEn: 'We will put you in touch with Riga Joint & Sports Orthopaedics without obligation.',
+      ctaLead: 'Orthopädie kommt bald. Aktuell starten wir mit Dental.',
+      ctaLeadEn: 'Orthopaedics is coming soon. We are currently starting with dental.',
       doctors: [
         {
           name: 'Dr. [Name]',

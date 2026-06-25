@@ -89,7 +89,25 @@ Configure a **5 MB** limit and allowed MIME types in **Storage → case-files** 
 - The **anon** key is safe in the browser only because of **RLS**. Never disable RLS on these tables in production without replacing controls.
 - For server-side matching, automation, or doctor-system APIs, use **Edge Functions** or a small backend with the **service_role** key (server-only), not in Vite.
 
-## 8. Later improvements
+## 8. Partner discovery booking page
+
+The shareable booking page is `/booking.html`. It uses the Vercel API route `/api/discovery-bookings` to store 15-minute weekday slots and send confirmation emails.
+
+1. Run `migrations/005_partner_discovery_bookings.sql` in the Supabase SQL Editor.
+2. Add these Vercel environment variables:
+   - `SUPABASE_URL` or `VITE_SUPABASE_URL`
+   - `SUPABASE_SERVICE_ROLE_KEY` (server-only; never expose this in frontend code)
+   - `SMTP_HOST` (for Zoho EU domain mail, usually `smtppro.zoho.eu`; global accounts may use `smtppro.zoho.com`)
+   - `SMTP_PORT` (`465` for SSL, or `587` for TLS)
+   - `SMTP_USER` (the full Zoho mailbox, e.g. `sascha@balticcaretravel.com`)
+   - `SMTP_PASS` (the Zoho mailbox password or an app-specific password if 2FA is enabled)
+   - `BOOKING_FROM_EMAIL` (optional, e.g. `Baltic Care Travel <sascha@balticcaretravel.com>`)
+   - `BOOKING_MEETING_LOCATION` (optional; defaults to the Zoom room `https://us05web.zoom.us/j/3512850325?pwd=dscobVBwpaJbsbbzHtP7ciaJgmwxVN.1&omn=82113167293`)
+3. Deploy. Share `https://your-domain/booking.html` with cooperation partners.
+
+Bookings are stored with RLS enabled and no public table policy; only the server-side API should write or read this table.
+
+## 9. Later improvements
 
 - Email confirmation, password reset, and MFA.
 - Word/PDF generation (server-side) and HL7/FHIR or clinic-specific APIs.

@@ -38,6 +38,7 @@ export default defineConfig({
         prices:             resolve(__dirname, 'prices.html'),
         patientStories:     resolve(__dirname, 'patient-stories.html'),
         faq:                resolve(__dirname, 'faq.html'),
+        booking:            resolve(__dirname, 'booking.html'),
         impressum:          resolve(__dirname, 'legal/impressum.html'),
         privacy:            resolve(__dirname, 'legal/privacy.html'),
         terms:              resolve(__dirname, 'legal/terms.html'),

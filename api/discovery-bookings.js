@@ -126,10 +126,10 @@ function createIcs({ startAt, endAt, name, company }) {
 }
 
 async function sendEmail({ to, subject, html, ics }) {
-  const host = process.env.SMTP_HOST || 'smtppro.zoho.eu';
-  const port = Number(process.env.SMTP_PORT || 465);
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
+  const host = String(process.env.SMTP_HOST || 'smtp.zoho.eu').trim();
+  const port = Number(String(process.env.SMTP_PORT || 465).trim());
+  const user = String(process.env.SMTP_USER || '').trim();
+  const pass = String(process.env.SMTP_PASS || '').replace(/\s+/g, '');
   const from = process.env.BOOKING_FROM_EMAIL || (user ? `Baltic Care Travel <${user}>` : '');
 
   if (!user || !pass) throw new Error('SMTP_USER and SMTP_PASS are not configured.');

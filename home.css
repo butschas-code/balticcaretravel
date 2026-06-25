@@ -3808,7 +3808,7 @@ body {
 }
 
 .prices-comparison-table {
-  min-width: 1080px;
+  min-width: 0;
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
@@ -3817,7 +3817,8 @@ body {
 }
 
 .prices-comparison-table thead th {
-  padding: 1.1rem 1.25rem 0.85rem;
+  box-sizing: border-box;
+  padding: 1.1rem 0.9rem 0.85rem;
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -3839,7 +3840,8 @@ body {
 }
 
 .prices-comparison-table tbody td {
-  padding: 1.1rem 1.25rem;
+  box-sizing: border-box;
+  padding: 1.1rem 0.9rem;
   border-bottom: 1px solid rgba(0, 33, 70, 0.1);
   color: rgba(0, 33, 70, 0.88);
   font-weight: 400;
@@ -3850,30 +3852,30 @@ body {
 .prices-comparison-table tbody td:first-child {
   font-weight: 500;
   color: rgba(0, 33, 70, 0.75);
-  width: 18%;
+  width: 15%;
 }
 
 .prices-comparison-table tbody td:nth-child(2) {
   font-weight: 500;
   color: var(--c-navy);
-  width: 33%;
+  width: 31%;
 }
 
 .prices-comparison-table th:nth-child(3),
 .prices-comparison-table td:nth-child(3) {
-  width: 14%;
+  width: 15%;
   white-space: nowrap;
 }
 
 .prices-comparison-table th:nth-child(4),
 .prices-comparison-table td:nth-child(4) {
-  width: 18%;
+  width: 17%;
   white-space: nowrap;
 }
 
 .prices-comparison-table th:last-child,
 .prices-comparison-table td:last-child {
-  width: 17%;
+  width: 22%;
   white-space: nowrap;
 }
 

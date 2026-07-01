@@ -8,7 +8,7 @@ function copyRootSiteScripts() {
     name: 'copy-root-site-scripts',
     closeBundle() {
       var outDir = resolve(__dirname, 'dist');
-      ['i18n.js', 'script.js', 'clinic-page.js', 'clinics-directory.js'].forEach(function (name) {
+      ['i18n.js', 'script.js', 'clinic-page.js', 'clinics-directory.js', 'analytics.js'].forEach(function (name) {
         var from = resolve(__dirname, name);
         if (existsSync(from)) copyFileSync(from, resolve(outDir, name));
       });

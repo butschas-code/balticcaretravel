@@ -614,6 +614,11 @@ body {
   padding: 0 clamp(1.5rem, 6vw, 7rem);
 }
 
+#ratgeber .treatments-cards-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 860px;
+}
+
 .treatment-card {
   background: #fff;
   border-radius: 20px;
@@ -1786,7 +1791,8 @@ body {
     gap: 2.5rem;
   }
 
-  .treatments-cards-grid {
+  .treatments-cards-grid,
+  #ratgeber .treatments-cards-grid {
     grid-template-columns: 1fr;
     max-width: 440px;
     margin-left: auto;
@@ -2021,6 +2027,11 @@ body {
 
 .dental-services-grid .dental-service-card {
   height: 100%;
+}
+
+a.dental-service-card {
+  text-decoration: none;
+  color: inherit;
 }
 
 .dental-service-card {

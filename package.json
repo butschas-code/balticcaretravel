@@ -7,6 +7,8 @@
   },
   "scripts": {
     "dev": "vite",
+    "seo": "node scripts/build-seo.mjs",
+    "prebuild": "node scripts/build-seo.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "supabase:auth-help": "node scripts/supabase-auth-help.mjs"

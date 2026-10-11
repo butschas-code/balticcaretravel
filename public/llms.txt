@@ -1,0 +1,52 @@
+# Baltic Care Travel
+
+> Baltic Care Travel koordiniert Behandlungen zwischen Patientinnen und Patienten aus Deutschland und ausgewählten Kliniken in Lettland. Wir sind keine Klinik, kein medizinischer Anbieter und kein Preisvergleichsportal. Aktuell ist die Zahnmedizin freigeschaltet. Kinderwunsch / IVF und Orthopädie werden vorbereitet.
+>
+> Baltic Care Travel erbringt keine medizinische Beratung, Diagnose oder Behandlung. Die Orientierungswerte stammen aus Partnerangeboten und typischen Vergleichspreisen im deutschsprachigen Raum, Stand 11. Oktober 2026. Der verbindliche Preis, der Behandlungsvertrag und die medizinische Entscheidung liegen bei der jeweiligen Klinik. Die Koordinationsgebühr von 250 € ist einmalig und nicht erstattungsfähig. Flug, Unterkunft und individuelle Zusatzleistungen wie Knochenaufbau sind darin nicht enthalten.
+
+## Canonical
+
+- Site: https://www.balticcaretravel.com/
+- Language of these pages: German (de). An English toggle exists in the browser; it does not create separate URLs.
+- Baltic Care Travel is a coordinator. It is not a dental clinic and does not diagnose or treat.
+- Live service: dental coordination in Latvia (Riga) for patients from Germany.
+- Not live: fertility / IVF and orthopaedics (in preparation). Plastic surgery is not offered.
+- Coordination fee: 250 EUR once, not reimbursable by insurance.
+- Treatment contract and treatment payment: always directly with the clinic.
+
+## Services
+
+- [Zahnbehandlung in Lettland](https://www.balticcaretravel.com/treatment-dental.html): Koordination von Implantaten, Zahnersatz, All-on-4 und Veneers.
+- [Kosten](https://www.balticcaretravel.com/prices.html): Orientierungswerte und die Koordinationsgebühr von 250 EUR.
+- [Ablauf](https://www.balticcaretravel.com/how-it-works.html): Anfrage, Unterlagen, Klinik-Matching, Begleitung.
+- [Kliniken in Riga](https://www.balticcaretravel.com/clinics.html): Partnerprofile. Baltic Care Travel ist nicht die Praxis.
+- [Kontakt](https://www.balticcaretravel.com/contact.html): Kostenfreies Erstgespräch.
+
+## Guides
+
+- [Ratgeber zur Zahnbehandlung in Lettland](https://www.balticcaretravel.com/ratgeber.html): Baltic Care Travel koordiniert Zahnbehandlungen in Lettland für Patientinnen und Patienten aus Deutschland: Implantate, Zahnersatz, All-on-4 und Veneers. Wir sind keine Klinik. Die Koordination kostet 250 € einmalig, die Behandlung rechnen Sie direkt mit der Klinik ab.
+- [Zahnimplantate in Lettland](https://www.balticcaretravel.com/zahnimplantate-lettland.html): Ein Einzelimplantat inklusive Aufbau und Krone liegt bei den Partnerkliniken orientierend bei 1.420–1.710 €, typische Vergleichswerte in Deutschland bei 2.500–4.000 €. Baltic Care Travel koordiniert den Weg für einmalig 250 €. Das verbindliche Angebot stellt die Klinik.
+- [Zahnersatz in Lettland](https://www.balticcaretravel.com/zahnersatz-lettland.html): Zahnersatz in Lettland umfasst bei uns vor allem Kronen, Brücken und implantatgetragenen Zahnersatz. Für vier Implantate inklusive Kronen liegen die Orientierungswerte bei 5.680–6.840 €, in Deutschland typischerweise bei 10.000–16.000 €. Den Behandlungsvertrag schließen Sie mit der Klinik.
+- [All-on-4 in Lettland](https://www.balticcaretravel.com/all-on-4-lettland.html): All-on-4 Zirkon für einen Kiefer liegt orientierend bei 8.500–11.000 €, All-on-6 Zirkon bei 9.000–12.000 €. In Deutschland liegen typische Vergleichsspannen bei 15.000–25.000 € bzw. 18.000–30.000 €. Ob die Methode passt, entscheidet die Klinik.
+- [Veneers in Lettland](https://www.balticcaretravel.com/veneers-lettland.html): Ein Smile Makeover mit acht Keramikveneers beginnt bei den Partnerkliniken orientierend ab 4.800 €. Typische Vergleichswerte in Deutschland liegen bei 8.000–12.000 €. Wie viele Veneers sinnvoll sind, entscheidet die Klinik.
+- [Zahnarzt in Riga für Patienten aus Deutschland](https://www.balticcaretravel.com/zahnarzt-riga.html): Zahnbehandlungen für Patienten aus Deutschland koordinieren wir mit ausgewählten Kliniken in Riga. Die Flugzeit aus Deutschland beträgt etwa zwei Stunden, Lettland ist EU-Mitglied und nutzt den Euro. Baltic Care Travel ist die deutschsprachige Koordination, nicht die behandelnde Praxis.
+- [Zahnimplantate: Deutschland oder Lettland?](https://www.balticcaretravel.com/vergleich-zahnimplantate-deutschland-lettland.html): Die Orientierungswerte unserer Partner liegen für ein Einzelimplantat inklusive Aufbau und Krone bei 1.420–1.710 €, typische Vergleichswerte in Deutschland bei 2.500–4.000 €. „Bis zu“-Angaben beschreiben die Spanne zwischen diesen Werten, keine garantierte Ersparnis. Reise, Aufenthalt und die Koordination von 250 € kommen hinzu.
+- [Zahnbehandlung im Ausland: Lettland, Ungarn, Türkei](https://www.balticcaretravel.com/vergleich-zahnbehandlung-ausland.html): Baltic Care Travel koordiniert Zahnbehandlungen in Lettland, nicht in Ungarn, Polen oder der Türkei. Lettland ist EU-Mitglied, nutzt den Euro und ist aus Deutschland in etwa zwei Stunden erreichbar. Preise anderer Länder veröffentlichen wir nicht, weil wir dort nicht koordinieren.
+
+## Orientation prices (not quotes)
+
+Source: https://www.balticcaretravel.com/prices.html, updated 2026-10-11.
+- Single implant including abutment and crown: Latvia 1420–1710 EUR; typical Germany 2500–4000 EUR.
+- Four implants including crowns: Latvia 5680–6840 EUR; typical Germany 10000–16000 EUR.
+- All-on-4 zirconia, one jaw: Latvia 8500–11000 EUR; typical Germany 15000–25000 EUR.
+- All-on-6 zirconia, one jaw: Latvia 9000–12000 EUR; typical Germany 18000–30000 EUR.
+- Eight ceramic veneers: Latvia from 4800 EUR; typical Germany 8000–12000 EUR.
+- "Up to" savings are the gap between the low Latvia figure and the high Germany figure. They are not a promise.
+- Flight, lodging, and extras such as bone grafting are not included.
+- Prices for Hungary, Poland, Turkey, fertility, orthopaedics, or plastic surgery are intentionally not published.
+
+## Policies
+
+- [Impressum](https://www.balticcaretravel.com/legal/impressum.html)
+- [Datenschutz](https://www.balticcaretravel.com/legal/privacy.html)
+- [AGB](https://www.balticcaretravel.com/legal/terms.html)

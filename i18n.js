@@ -17,6 +17,7 @@
         prices: 'Preise',
         about: 'Über uns',
         faq: 'FAQ',
+        guides: 'Ratgeber',
         contact: 'Kontakt',
         login: 'Anmelden',
         process: 'Ablauf',
@@ -246,7 +247,7 @@
         formSuccess: 'Vielen Dank. Ihre Anfrage wurde gesendet. Wir melden uns in Kürze bei Ihnen.'
       },
       treatments: {
-        title: 'Behandlungen in Lettland',
+        title: 'Behandlungen in Lettland | Baltic Care Travel',
         titleShort: 'Behandlungen',
         lead: 'Wir starten mit Zahnmedizin. Kinderwunsch / IVF und Orthopädie sind im Aufbau und kommen bald dazu.',
         viewDental: 'Zahnbehandlungen ansehen',
@@ -261,7 +262,7 @@
       clinics: {
         title: 'Partnerkliniken',
         lead: 'Sorgfältig ausgewählte Kliniken in Riga und Lettland.',
-        directoryPageTitle: 'Partnerkliniken',
+        directoryPageTitle: 'Zahnkliniken in Riga | Baltic Care Travel',
         directoryHeroTitle:
           'Fachliche Qualität, moderne Kliniken und ein Umfeld, das Vertrauen schafft',
         directoryHeroSub:
@@ -291,7 +292,7 @@
         ctaLead: 'Wir helfen Ihnen, die passende Klinik zu finden.'
       },
       dentalPage: {
-        pageTitle: 'Zahnbehandlung in Lettland',
+        pageTitle: 'Zahnbehandlung in Lettland | Baltic Care Travel',
         metaDescription: 'Zahnbehandlung in Lettland mit Baltic Care Travel: Qualität, klare Planung und wirtschaftlich sinnvolle Optionen bei Implantaten, Zahnersatz und ästhetischer Zahnmedizin.',
         heroTitle: 'Zahnbehandlung in Lettland',
         heroSub: 'Für Patientinnen und Patienten, die Qualität, Klarheit und einen wirtschaftlich sinnvollen Weg suchen.',
@@ -338,7 +339,7 @@
         ctaLead: 'Senden Sie uns Ihre Anfrage oder vereinbaren Sie ein kostenloses Erstgespräch.'
       },
       fertilityPage: {
-        pageTitle: 'Kinderwunschbehandlung in Lettland',
+        pageTitle: 'Kinderwunsch in Lettland | Baltic Care Travel',
         metaDescription: 'Kinderwunschbehandlung in Lettland mit Baltic Care Travel: diskret, strukturiert, deutschsprachige Begleitung bei IVF und verwandten Themen.',
         heroTitle: 'Kinderwunschbehandlung in Lettland',
         heroSub: 'Kommt bald: Dieser Bereich wird derzeit vorbereitet.',
@@ -381,7 +382,7 @@
         ctaLead: 'Aktuell starten wir mit Dental. Informationen zu IVF werden schrittweise ergänzt.'
       },
       orthoPage: {
-        pageTitle: 'Orthopädie in Lettland',
+        pageTitle: 'Orthopädie in Lettland | Baltic Care Travel',
         metaDescription:
           'Orthopädie bei Baltic Care Travel: Dieser Bereich wird vorbereitet und kommt bald. Aktuell starten wir mit Dental.',
         heroTitle: 'Orthopädie in Lettland',
@@ -421,7 +422,7 @@
         ctaLead: 'Aktuell starten wir mit Dental. Informationen zu Orthopädie werden schrittweise ergänzt.'
       },
       howItWorks: {
-        pageTitle: 'So funktioniert es',
+        pageTitle: 'Ablauf: Behandlung in Lettland | Baltic Care Travel',
         heroTitle: 'Ihr Weg zur Behandlung in Lettland',
         heroSub: 'Klar strukturiert. Persönlich begleitet. Deutschsprachig.',
         intro: 'Eine medizinische Behandlung im Ausland darf sich nicht unübersichtlich anfühlen. Deshalb führen wir Sie Schritt für Schritt durch den Prozess.',
@@ -489,7 +490,7 @@
           'Wenn Sie möchten, besprechen wir unverbindlich, ob und wie wir Sie auf Ihrem Weg begleiten können.'
       },
       prices: {
-        pageTitle: 'Preise & Transparenz | Baltic Care Travel',
+        pageTitle: 'Zahnbehandlung Lettland: Kosten | Baltic Care Travel',
         heroTitle: 'Kosten verstehen. Entscheidungen sicherer treffen.',
         heroSub:
           'Damit Sie von Anfang an wissen, welche Leistungen über uns laufen und welche direkt mit der Klinik vereinbart werden.',
@@ -630,7 +631,7 @@
         s5Meta: 'Petra S., Frankfurt · Hüft-OP in Riga'
       },
       faq: {
-        pageTitle: 'FAQ | Baltic Care Travel',
+        pageTitle: 'FAQ: Behandlung in Lettland | Baltic Care Travel',
         heroTitle: 'FAQ',
         heroSub:
           'Antworten zu Baltic Care Travel, Ablauf, Kliniken, Kosten und Organisation — nach Themen sortiert.',
@@ -743,7 +744,7 @@
       contact: {
         pageTitle: 'Kontakt | Baltic Care Travel',
         metaDescription:
-          'Kontakt zu Baltic Care Travel: Anfrageformular und deutschsprachige Koordination für Behandlungen in Lettland.',
+          'Kostenfreies Erstgespräch mit Baltic Care Travel zur Koordination einer Zahnbehandlung in Lettland.',
         heroTitle: 'Nehmen Sie Kontakt auf',
         heroSub: 'Wir hören zu, ordnen ein und zeigen Ihnen die nächsten sinnvollen Schritte.',
         heroReadMore: 'Weiterlesen',
@@ -840,6 +841,7 @@
         prices: 'Prices',
         about: 'About us',
         faq: 'FAQ',
+        guides: 'Guides',
         contact: 'Contact',
         login: 'Login',
         process: 'Process',
@@ -1069,7 +1071,7 @@
         formSuccess: 'Thank you. Your enquiry has been sent. We will get back to you shortly.'
       },
       treatments: {
-        title: 'Treatments in Latvia',
+        title: 'Treatments in Latvia | Baltic Care Travel',
         titleShort: 'Treatments',
         lead: 'We are starting with dentistry. Fertility / IVF and orthopaedics are in development and coming soon.',
         viewDental: 'View dental treatments',
@@ -1084,7 +1086,7 @@
       clinics: {
         title: 'Partner clinics',
         lead: 'Carefully selected clinics in Riga and Latvia.',
-        directoryPageTitle: 'Partner clinics',
+        directoryPageTitle: 'Dental clinics in Riga | Baltic Care Travel',
         directoryHeroTitle:
           'Clinical quality, modern clinics and an environment that builds trust',
         directoryHeroSub:
@@ -1114,7 +1116,7 @@
         ctaLead: 'We help you find the right clinic.'
       },
       dentalPage: {
-        pageTitle: 'Dental treatment in Latvia',
+        pageTitle: 'Dental treatment in Latvia | Baltic Care Travel',
         metaDescription: 'Dental treatment in Latvia with Baltic Care Travel: quality, clear planning and sensible options for implants, prosthetics and aesthetic dentistry.',
         heroTitle: 'Dental treatment in Latvia',
         heroSub: 'For patients who want quality, clarity and a financially sensible path.',
@@ -1161,7 +1163,7 @@
         ctaLead: 'Send us your enquiry or book a free initial conversation.'
       },
       fertilityPage: {
-        pageTitle: 'Fertility treatment in Latvia',
+        pageTitle: 'Fertility treatment in Latvia | Baltic Care Travel',
         metaDescription: 'Fertility treatment in Latvia with Baltic Care Travel: discreet, structured support in German for IVF and related pathways.',
         heroTitle: 'Fertility treatment in Latvia',
         heroSub: 'Coming soon: this area is currently being prepared.',
@@ -1204,7 +1206,7 @@
         ctaLead: 'We are currently starting with dental. IVF information will be added step by step.'
       },
       orthoPage: {
-        pageTitle: 'Orthopaedics in Latvia',
+        pageTitle: 'Orthopaedics in Latvia | Baltic Care Travel',
         metaDescription:
           'Orthopaedics at Baltic Care Travel: this area is being prepared and coming soon. We are currently starting with dental.',
         heroTitle: 'Orthopaedics in Latvia',
@@ -1244,7 +1246,7 @@
         ctaLead: 'We are currently starting with dental. Orthopaedics information will be added step by step.'
       },
       howItWorks: {
-        pageTitle: 'How it works',
+        pageTitle: 'How treatment coordination works | Baltic Care Travel',
         heroTitle: 'Your path to <br class="hero-title-linebreak" aria-hidden="true">treatment in Latvia',
         heroSub: 'Clearly structured. Personally supported. In German.',
         intro: 'Treatment abroad should never feel overwhelming. We guide you through the process, step by step.',
@@ -1312,7 +1314,7 @@
           'If you wish, we can talk without obligation about whether and how we can support you on your pathway.'
       },
       prices: {
-        pageTitle: 'Prices & transparency | Baltic Care Travel',
+        pageTitle: 'Dental costs in Latvia | Baltic Care Travel',
         heroTitle: 'Understand costs. Make decisions with more confidence.',
         heroSub:
           'So you know from the outset which services are handled through us and which are agreed directly with the clinic.',
@@ -1453,7 +1455,7 @@
         s5Meta: 'Petra S., Frankfurt · Hip surgery in Riga'
       },
       faq: {
-        pageTitle: 'FAQ | Baltic Care Travel',
+        pageTitle: 'FAQ: treatment in Latvia | Baltic Care Travel',
         heroTitle: 'FAQ',
         heroSub:
           'Answers about Baltic Care Travel, the process, clinics, costs and organisation — grouped by topic.',
@@ -1565,7 +1567,7 @@
       contact: {
         pageTitle: 'Contact | Baltic Care Travel',
         metaDescription:
-          'Contact Baltic Care Travel: enquiry form and German-language coordination for treatment in Latvia.',
+          'Free introductory call with Baltic Care Travel about coordinating dental treatment in Latvia.',
         heroTitle: 'Get in touch',
         heroSub: 'We listen, help you make sense of your situation, and outline sensible next steps.',
         heroReadMore: 'Read on',

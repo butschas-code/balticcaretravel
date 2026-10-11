@@ -1,6 +1,9 @@
 import { copyFileSync, existsSync } from 'fs';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import { generateSeo, guideEntries } from './scripts/build-seo.mjs';
+
+generateSeo();
 
 /** Copy global site scripts into dist so login.html (and any page that references them) does not 404 after build. */
 function copyRootSiteScripts() {
@@ -43,6 +46,7 @@ export default defineConfig({
         privacy:            resolve(__dirname, 'legal/privacy.html'),
         terms:              resolve(__dirname, 'legal/terms.html'),
         login:              resolve(__dirname, 'login.html'),
+        ...guideEntries(),
       },
     },
   },

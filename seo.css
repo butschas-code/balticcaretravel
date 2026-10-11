@@ -1,0 +1,339 @@
+/* Guide and comparison pages. Content sits high on the page so the answer is readable without a full-screen hero. */
+
+.seo-skip {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  transform: translateY(-120%);
+  background: #fff;
+  color: #002146;
+  padding: 0.6rem 0.9rem;
+  z-index: 200;
+  border-radius: 0 0 10px 10px;
+}
+
+.seo-skip:focus {
+  transform: none;
+}
+
+.seo-mast {
+  position: relative;
+  padding: 8.25rem 1.25rem 3.25rem;
+  background-color: #002146;
+  background-position: center 42%;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+}
+
+.seo-mast h1 {
+  margin: 0.35rem auto 0.85rem;
+  max-width: 18ch;
+  font-size: clamp(2.15rem, 4.6vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+
+.seo-mast__sub {
+  margin: 0 auto;
+  max-width: 38rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.seo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.35rem;
+}
+
+.seo-wrap {
+  width: min(820px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.75rem 0 0.5rem;
+}
+
+.seo-crumbs {
+  margin: 0 0 1.25rem;
+}
+
+.seo-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  color: #6e6e73;
+}
+
+.seo-crumbs li:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.5rem;
+  color: rgba(0, 33, 70, 0.35);
+}
+
+.seo-crumbs a {
+  color: #002146;
+  text-decoration: none;
+}
+
+.seo-crumbs a:hover {
+  text-decoration: underline;
+}
+
+.seo-answer {
+  background: #f5f5f7;
+  border-left: 4px solid #52bcfb;
+  border-radius: 0 18px 18px 0;
+  padding: 1.15rem 1.3rem 1.2rem;
+  margin: 0 0 1.25rem;
+}
+
+.seo-answer__label {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #002146;
+}
+
+.seo-answer__text {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: #1d1d1f;
+}
+
+.seo-entity {
+  margin: 0 0 1.5rem;
+  color: #6e6e73;
+  font-size: 0.98rem;
+}
+
+.seo-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 0 0 0.5rem;
+}
+
+.seo-facts div {
+  background: #fff;
+  border: 1px solid rgba(0, 33, 70, 0.08);
+  border-radius: 16px;
+  padding: 0.95rem 1.05rem;
+}
+
+.seo-facts dt {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #6e6e73;
+}
+
+.seo-facts dd {
+  margin: 0.28rem 0 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #002146;
+}
+
+.seo-prose h2 {
+  margin: 2.4rem 0 0.75rem;
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: #002146;
+}
+
+.seo-prose p,
+.seo-prose li {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.seo-prose p {
+  margin: 0 0 1rem;
+}
+
+.seo-prose ul {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+}
+
+.seo-prose li + li {
+  margin-top: 0.4rem;
+}
+
+.seo-prose a {
+  color: #002146;
+  font-weight: 600;
+}
+
+.seo-table-caption {
+  margin: 2rem 0 0.6rem;
+  color: #6e6e73;
+  font-size: 0.92rem;
+}
+
+.seo-table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1rem;
+  border: 1px solid rgba(0, 33, 70, 0.08);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.seo-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 36rem;
+  font-size: 0.95rem;
+}
+
+.seo-table th,
+.seo-table td {
+  text-align: left;
+  padding: 0.85rem 0.95rem;
+  border-bottom: 1px solid rgba(0, 33, 70, 0.08);
+  vertical-align: top;
+}
+
+.seo-table th {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6e6e73;
+  font-weight: 700;
+}
+
+.seo-table tr:last-child td {
+  border-bottom: none;
+}
+
+.seo-table td:nth-child(n + 2) {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.seo-table td:last-child {
+  font-weight: 700;
+  color: #002146;
+}
+
+.seo-faq {
+  margin-top: 0.5rem;
+}
+
+.seo-updated,
+.seo-disclaimer {
+  color: #6e6e73;
+  font-size: 0.92rem;
+}
+
+.seo-disclaimer {
+  margin-top: 1.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 33, 70, 0.08);
+}
+
+.seo-related {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.seo-related a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid rgba(0, 33, 70, 0.08);
+  border-radius: 16px;
+  padding: 1rem 1.05rem;
+}
+
+.seo-related a:hover {
+  border-color: rgba(82, 188, 251, 0.8);
+}
+
+.seo-related strong {
+  display: block;
+  color: #002146;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.seo-related span {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #6e6e73;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.seo-page .section-cta-final {
+  position: relative;
+}
+
+.seo-hub-list {
+  display: grid;
+  gap: 0.85rem;
+  margin: 1.5rem 0;
+}
+
+.seo-hub-list a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid rgba(0, 33, 70, 0.08);
+  border-radius: 18px;
+  padding: 1.1rem 1.2rem 1.15rem;
+  background: #fff;
+}
+
+.seo-hub-list a:hover {
+  border-color: rgba(82, 188, 251, 0.85);
+}
+
+.seo-hub-list h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  color: #002146;
+}
+
+.seo-hub-list p {
+  margin: 0;
+  color: #1d1d1f;
+}
+
+a.dental-service-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 700px) {
+  .seo-facts,
+  .seo-related {
+    grid-template-columns: 1fr;
+  }
+
+  .seo-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .seo-mast h1 {
+    max-width: 16ch;
+  }
+}

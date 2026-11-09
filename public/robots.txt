@@ -1,7 +1,6 @@
 # Baltic Care Travel — public pages may be crawled, including by answer and generative engines.
 User-agent: *
 Allow: /
-Disallow: /login.html
 Disallow: /api/
 Disallow: /src/
 

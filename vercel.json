@@ -3,6 +3,13 @@
   "outputDirectory": "dist",
   "installCommand": "npm ci",
   "framework": "vite",
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/login.html",
@@ -14,6 +21,14 @@
     },
     {
       "source": "/treatment-plastic.html",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/treatment-fertility.html",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/treatment-orthopedic.html",
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
     }
   ],

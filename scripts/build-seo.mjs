@@ -489,7 +489,7 @@ function renderGuide(guide, chrome) {
   const crumbHtml = `<nav class="seo-crumbs" aria-label="Brotkrumen"><ol>${crumbs
     .map((item, index) => {
       if (index === crumbs.length - 1) return `<li aria-current="page">${esc(item.name)}</li>`;
-      const href = item.url === ORIGIN + '/' ? 'index.html' : item.url.replace(ORIGIN + '/', '');
+      const href = item.url === ORIGIN + '/' ? '/' : item.url.replace(ORIGIN + '/', '');
       return `<li><a href="${esc(href)}">${esc(item.name)}</a></li>`;
     })
     .join('')}</ol></nav>`;
@@ -623,7 +623,6 @@ function robotsTxt() {
   return `# Baltic Care Travel — public pages may be crawled, including by answer and generative engines.
 User-agent: *
 Allow: /
-Disallow: /login.html
 Disallow: /api/
 Disallow: /src/
 

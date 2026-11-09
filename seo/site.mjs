@@ -127,8 +127,8 @@ export const existingPages = {
     description:
       'Kinderwunsch / IVF bei Baltic Care Travel wird vorbereitet und ist noch nicht buchbar. Aktuell koordinieren wir Zahnbehandlungen in Lettland.',
     crumb: 'Kinderwunsch',
-    priority: '0.3',
-    changefreq: 'monthly',
+    robots: ROBOTS_NOINDEX,
+    priority: '0',
     image: '/images/ivf.jpg',
   },
   'treatment-orthopedic.html': {
@@ -136,8 +136,8 @@ export const existingPages = {
     description:
       'Orthopädie bei Baltic Care Travel wird vorbereitet und ist noch nicht buchbar. Aktuell koordinieren wir Zahnbehandlungen in Lettland.',
     crumb: 'Orthopädie',
-    priority: '0.3',
-    changefreq: 'monthly',
+    robots: ROBOTS_NOINDEX,
+    priority: '0',
     image: '/images/orthopedics.jpg',
   },
   'legal/impressum.html': {
